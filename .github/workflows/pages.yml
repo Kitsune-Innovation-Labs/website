@@ -38,6 +38,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html CNAME _site/
+          cp -a assets _site/
           cp -a charter _site/
           cp -a design _site/
           mkdir -p _site/kitsuneos
