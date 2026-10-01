@@ -97,6 +97,31 @@ html[data-theme="day"] body::before { content:""; position:fixed; inset:0; z-ind
 @keyframes currentShift { from{background-position:0% 0;} to{background-position:280% 0;} }
 .nav-divider { width:1px; height:20px; background:var(--nav-border); margin:0 6px; }
 .nav-right { display:flex; align-items:center; gap:8px; margin-left:8px; }
+
+/* editions dropdown — Design → Kitsunebi editions */
+.editions { position:relative; }
+.editions-btn { display:flex; align-items:center; gap:8px; padding:9px 15px; border-radius:999px;
+  color:var(--ink-muted); font-size:13px; font-weight:600; cursor:pointer; text-decoration:none;
+  transition:all var(--dur-base) var(--ease-flow); white-space:nowrap; background:none; border:none; font-family:inherit; }
+.editions-btn:hover { background:var(--chip-bg); color:var(--ink); }
+.editions-btn .ico { transition:transform var(--dur-base) var(--ease-flow); }
+.editions-btn[aria-expanded="true"] .ico { transform:rotate(180deg); }
+.editions-menu { position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); min-width:230px;
+  background:var(--nav-bg); border:1px solid var(--nav-border); border-radius:18px; padding:6px;
+  backdrop-filter:blur(18px); box-shadow:8px 8px 24px var(--shadow-dark), -6px -6px 18px var(--shadow-light);
+  opacity:0; visibility:hidden; transform:translateX(-50%) translateY(-6px);
+  transition:opacity var(--dur-base) var(--ease-flow), transform var(--dur-base) var(--ease-flow), visibility var(--dur-base); z-index:60; }
+.editions-menu.open { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+.editions-opt { display:flex; align-items:center; gap:10px; width:100%; padding:9px 12px; border-radius:12px;
+  color:var(--ink); text-decoration:none; font-size:12.5px; font-weight:700; cursor:pointer;
+  transition:background var(--dur-base) var(--ease-flow); border:none; background:transparent; font-family:inherit; text-align:left; }
+.editions-opt:hover { background:var(--chip-bg); }
+.editions-opt .eo-desc { display:block; font-size:10.5px; font-weight:600; color:var(--ink-muted); margin-top:1px; }
+.editions-opt .eo-badge { margin-left:auto; font-size:9px; font-weight:800; letter-spacing:0.4px; text-transform:uppercase;
+  padding:3px 8px; border-radius:999px; background:var(--chip-bg); color:var(--ink-muted); white-space:nowrap; }
+.editions-opt.active { background:linear-gradient(110deg,var(--foxfire),var(--foxfire-deep)); color:var(--text-on-foxfire); box-shadow:0 0 16px var(--shadow-glow); }
+.editions-opt.active .eo-desc { color:var(--text-on-foxfire); opacity:0.8; }
+.editions-opt.active .eo-badge { background:rgba(255,255,255,0.25); color:var(--text-on-foxfire); }
 .toggle { display:flex; align-items:center; border-radius:999px; padding:4px; cursor:pointer;
   border:1px solid var(--nav-border); transition:background var(--dur-daynight) var(--ease-water); }
 html[data-theme="day"] .toggle { background:linear-gradient(110deg,#EDF2FA,#E2EBF6); }
@@ -275,8 +300,25 @@ html[data-theme="night"] .toggle { background:linear-gradient(110deg,#0D152C,#18
       <div class="brand-name"><span class="ki">Kitsune</span> Innovation Labs</div>
     </a>
     <a class="nav-item active" href="/"><svg class="ico"><use href="#i-star"/></svg> <span>Home</span></a>
-    <a class="nav-item" href="/design/"><svg class="ico"><use href="#i-droplet"/></svg> <span>Design</span></a>
-    <a class="nav-item" href="/charter"><svg class="ico"><use href="#i-book"/></svg> <span>Charter</span></a>
+    <div class="editions">
+      <button type="button" class="editions-btn" id="editionsBtn" aria-expanded="false" aria-haspopup="true">
+        <svg class="ico"><use href="#i-droplet"/></svg> <span>Design</span>
+        <svg class="ico" style="width:12px;height:12px"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="editions-menu" id="editionsMenu" role="menu">
+        <a class="editions-opt active" href="./design/" role="menuitem">
+          <svg class="ico"><use href="#i-droplet"/></svg>
+          <span>Living Neumorphism<span class="eo-desc">crisp · clean · the bend</span></span>
+          <span class="eo-badge">Core</span>
+        </a>
+        <a class="editions-opt" href="./design/#/moe" role="menuitem">
+          <svg class="ico"><use href="#i-paw"/></svg>
+          <span>Living Moe<span class="eo-desc">cute · sweet · clay plush</span></span>
+          <span class="eo-badge">Warm</span>
+        </a>
+      </div>
+    </div>
+    <a class="nav-item" href="./charter/"><svg class="ico"><use href="#i-book"/></svg> <span>Charter</span></a>
     <div class="nav-divider"></div>
     <div class="nav-right">
       <div class="toggle" id="themeToggle" role="button" tabindex="0" aria-label="Toggle day and night">
@@ -310,7 +352,7 @@ html[data-theme="night"] .toggle { background:linear-gradient(110deg,#0D152C,#18
     <div class="section-head"><h2>The <span class="hl">family</span></h2><span class="note">one city, many rooms</span></div>
     <div class="stream"></div>
     <div class="products">
-      <a class="p-card" href="/design/">
+      <a class="p-card" href="./design/">
         <div class="pc-ico"><svg class="ico"><use href="#i-droplet"/></svg></div>
         <div class="pc-role">The flame</div>
         <div class="pc-name">Kitsunebi 狐火</div>
@@ -357,7 +399,7 @@ html[data-theme="night"] .toggle { background:linear-gradient(110deg,#0D152C,#18
     <div class="ct-t">See the flame burning</div>
     <div class="ct-s">The Kitsunebi living styleguide — tokens, the material law, the bend, the current. Touch it.</div>
     <div class="ct-btns">
-      <a class="btn btn-primary" href="/design/"><svg class="ico"><use href="#i-spark"/></svg> Explore the design</a>
+      <a class="btn btn-primary" href="./design/"><svg class="ico"><use href="#i-spark"/></svg> Explore the design</a>
       <a class="btn btn-ghost" href="#family">Meet the family</a>
     </div>
   </div>
@@ -379,6 +421,14 @@ html[data-theme="night"] .toggle { background:linear-gradient(110deg,#0D152C,#18
   toggle.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle.click(); } });
   const qTheme = new URLSearchParams(location.search).get('theme');
   if(qTheme==='day'||qTheme==='night') setTheme(qTheme);
+
+  // editions dropdown — Design → Kitsunebi editions
+  const eBtn = document.getElementById('editionsBtn');
+  const eMenu = document.getElementById('editionsMenu');
+  eBtn.addEventListener('click', (e) => { e.stopPropagation(); const open = eMenu.classList.toggle('open'); eBtn.setAttribute('aria-expanded', open); });
+  document.addEventListener('click', () => { eMenu.classList.remove('open'); eBtn.setAttribute('aria-expanded', 'false'); });
+  eBtn.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); eBtn.click(); } });
+  eMenu.addEventListener('keydown', e => { if(e.key==='Escape'){ eMenu.classList.remove('open'); eBtn.setAttribute('aria-expanded','false'); eBtn.focus(); } });
 </script>
 
 <script>
