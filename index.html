@@ -85,24 +85,11 @@
     .brand {
       display:flex;
       align-items:center;
-      gap:11px;
       text-decoration:none;
       font-size:.98rem;
       font-weight:800;
       letter-spacing:.01em;
       white-space:nowrap;
-    }
-
-    .mark {
-      width:36px;
-      height:36px;
-      border-radius:12px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg,var(--foxfire),var(--sakura));
-      color:#0D152C;
-      box-shadow:0 0 28px rgba(126,200,255,.24);
-      font-size:1.1rem;
     }
 
     .nav-links { display:flex; align-items:center; gap:6px; }
@@ -225,7 +212,7 @@
       text-decoration:none;
       transition:transform .2s ease,border-color .2s ease,background .2s ease;
     }
-    .card:hover { transform:translateY(-3px); border-color:var(--border-strong); }
+    a.card:hover { transform:translateY(-3px); border-color:var(--border-strong); }
     .card-top { display:flex; justify-content:space-between; gap:14px; align-items:start; }
     .card h3 { margin:10px 0 10px; font-size:1.45rem; letter-spacing:-.02em; }
     .card p { margin:0; color:var(--muted); }
@@ -273,7 +260,6 @@
       .nav { min-height:64px; }
       .nav-links a:nth-child(1),
       .nav-links a:nth-child(2) { display:none; }
-      .brand span:last-child { display:none; }
       .hero { padding:84px 0 60px; }
       .grid,
       .principles { grid-template-columns:1fr; }
@@ -292,7 +278,6 @@
   <header class="site-header">
     <div class="shell nav">
       <a class="brand" href="./" aria-label="Kitsune Innovation Labs home">
-        <span class="mark" aria-hidden="true">✦</span>
         <span>Kitsune Innovation Labs</span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
@@ -326,12 +311,12 @@
         </div>
 
         <div class="grid">
-          <a class="card" href="./kitsuneos/">
-            <div class="card-top"><span class="eyebrow">Operating system</span><span class="status live">Public</span></div>
+          <div class="card">
+            <div class="card-top"><span class="eyebrow">Operating system</span><span class="status">In development</span></div>
             <h3>KitsuneOS</h3>
-            <p>An open personal-computing platform built around user control, modularity and first-class support for the wider Kitsune ecosystem.</p>
-            <div class="card-link">Explore KitsuneOS →</div>
-          </a>
+            <p>An open personal-computing platform being developed around user control, modularity and first-class support for the wider Kitsune ecosystem.</p>
+            <div class="card-link">More as the project develops</div>
+          </div>
 
           <a class="card" href="./design/#/overview">
             <div class="card-top"><span class="eyebrow">Design language</span><span class="status live">Researching in public</span></div>
@@ -387,7 +372,6 @@
       <div class="footer-links">
         <a href="./charter/">Charter</a>
         <a href="./design/">Kitsunebi Lab</a>
-        <a href="./kitsuneos/">KitsuneOS</a>
         <a href="https://github.com/Kitsune-Innovation-Labs">GitHub</a>
       </div>
     </div>
