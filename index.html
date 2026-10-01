@@ -272,24 +272,37 @@
       to { border-radius:58% 42% 45% 55% / 38% 59% 41% 62%; transform:rotate(2deg) translateY(-10px); }
     }
 
-    .ticker {
-      background:color-mix(in srgb,var(--soft) 78%,var(--cream));
-      color:var(--ink);
-      overflow:hidden;
-      white-space:nowrap;
+    .principles-rail {
+      width:min(1180px,calc(100% - 48px));
+      margin:0 auto;
+      padding:8px 0 28px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 12px;
+      align-items:center;
     }
-    .ticker-track {
+    .principle-chip {
       display:inline-flex;
-      gap:48px;
-      min-width:max-content;
-      padding:17px 0;
+      align-items:center;
+      min-height:36px;
+      padding:0 13px;
+      border-radius:999px;
+      background:var(--soft);
+      color:var(--muted);
+      font-size:.73rem;
       font-weight:900;
-      letter-spacing:.08em;
+      letter-spacing:.075em;
       text-transform:uppercase;
-      animation:marquee 24s linear infinite;
     }
-    .ticker-track span::after { content:"✦"; margin-left:48px; color:var(--foxfire-strong); opacity:.8; }
-    @keyframes marquee { to { transform:translateX(-50%); } }
+    .principle-chip:nth-child(2) { background:color-mix(in srgb,var(--foxfire) 22%,var(--soft)); color:var(--ink); }
+    .principle-chip:nth-child(4) { background:color-mix(in srgb,var(--sakura) 28%,var(--soft)); color:var(--ink); }
+    .principle-dot {
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--foxfire-strong);
+      opacity:.65;
+    }
 
     section { padding:124px 0; }
     .section-label {
@@ -436,6 +449,7 @@
       h1 { font-size:clamp(3.4rem,18vw,5.6rem); }
       .hero-play { min-height:320px; }
       .orb { width:min(280px,78vw); }
+      .principles-rail { width:min(100% - 30px,1180px); padding-bottom:16px; }
       section { padding:88px 0; }
       .project-grid { margin-top:46px; gap:20px; }
       .project { min-height:290px; padding:28px; }
@@ -486,10 +500,12 @@
       </section>
     </div>
 
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        <span>USER AGENCY</span><span>OPEN SYSTEMS</span><span>SELF EXPRESSION</span><span>LOCAL CONTROL</span><span>RESEARCH MADE VISIBLE</span><span>USER AGENCY</span><span>OPEN SYSTEMS</span><span>SELF EXPRESSION</span><span>LOCAL CONTROL</span><span>RESEARCH MADE VISIBLE</span>
-      </div>
+    <div class="principles-rail" aria-label="Kitsune Innovation Labs principles">
+      <span class="principle-chip">User agency</span><span class="principle-dot" aria-hidden="true"></span>
+      <span class="principle-chip">Open systems</span><span class="principle-dot" aria-hidden="true"></span>
+      <span class="principle-chip">Self expression</span><span class="principle-dot" aria-hidden="true"></span>
+      <span class="principle-chip">Local control</span><span class="principle-dot" aria-hidden="true"></span>
+      <span class="principle-chip">Research made visible</span>
     </div>
 
     <div class="shell">
