@@ -52,7 +52,7 @@
 
     a { color:inherit; }
     button { font:inherit; }
-    .shell { width:min(1120px,calc(100% - 48px)); margin:0 auto; }
+    .shell { width:min(1180px,calc(100% - 48px)); margin:0 auto; }
 
     .page-blobs {
       position:fixed;
@@ -63,30 +63,60 @@
     }
     .blob {
       position:absolute;
-      border-radius:58% 42% 47% 53% / 41% 56% 44% 59%;
-      filter:blur(22px);
-      opacity:.56;
-      animation:drift 20s ease-in-out infinite alternate;
-      will-change:transform;
+      opacity:.72;
+      border:1px solid rgba(255,255,255,.34);
+      box-shadow:0 26px 70px rgba(63,87,128,.10),inset 0 1px 0 rgba(255,255,255,.28);
+      animation:lava-drift 18s ease-in-out infinite alternate;
+      will-change:transform,border-radius;
+      transform-origin:center;
+      translate:0 var(--scroll-shift,0px);
+    }
+    .blob::after {
+      content:"";
+      position:absolute;
+      inset:10%;
+      border-radius:inherit;
+      background:linear-gradient(135deg,rgba(255,255,255,.24),transparent 45%);
+      opacity:.55;
     }
     .blob.one {
-      width:360px;height:360px;left:-120px;top:120px;
-      background:radial-gradient(circle at 35% 35%,rgba(121,200,255,.44),rgba(121,200,255,.13) 60%,transparent 78%);
+      width:330px;height:390px;left:-115px;top:155px;
+      border-radius:64% 36% 52% 48%/44% 61% 39% 56%;
+      background:linear-gradient(145deg,rgba(121,200,255,.88),rgba(85,182,245,.58));
+      animation-duration:20s;
     }
     .blob.two {
-      width:320px;height:320px;right:-100px;top:520px;
-      background:radial-gradient(circle at 45% 42%,rgba(247,200,213,.4),rgba(247,200,213,.12) 62%,transparent 80%);
+      width:300px;height:255px;right:-76px;top:470px;
+      border-radius:42% 58% 67% 33%/58% 42% 58% 42%;
+      background:linear-gradient(155deg,rgba(247,200,213,.9),rgba(239,168,188,.56));
       animation-duration:24s;
+      animation-direction:alternate-reverse;
     }
     .blob.three {
-      width:260px;height:260px;left:12%;bottom:70px;
-      background:radial-gradient(circle at 42% 42%,rgba(239,114,74,.22),rgba(239,114,74,.07) 62%,transparent 80%);
+      width:250px;height:310px;left:4%;bottom:100px;
+      border-radius:55% 45% 39% 61%/37% 60% 40% 63%;
+      background:linear-gradient(145deg,rgba(239,114,74,.68),rgba(255,188,137,.46));
       animation-duration:22s;
     }
-    html[data-theme="night"] .blob { opacity:.36; filter:blur(28px); }
+    .blob.four {
+      width:230px;height:270px;right:10%;bottom:36px;
+      border-radius:37% 63% 57% 43%/61% 43% 57% 39%;
+      background:linear-gradient(135deg,rgba(85,182,245,.58),rgba(126,200,255,.34));
+      animation-duration:27s;
+      animation-direction:alternate-reverse;
+    }
+    html[data-theme="night"] .blob {
+      opacity:.46;
+      border-color:rgba(255,255,255,.12);
+      box-shadow:0 30px 90px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.10);
+      filter:saturate(.88) brightness(.84);
+    }
 
-    @keyframes drift {
-      from { transform:translate3d(0,0,0) rotate(0deg) scale(1); }
+    @keyframes lava-drift {
+      0% { transform:translate3d(0,0,0) rotate(-2deg) scale(1);border-radius:64% 36% 52% 48%/44% 61% 39% 56%; }
+      45% { transform:translate3d(18px,-12px,0) rotate(4deg) scale(1.045);border-radius:43% 57% 35% 65%/58% 37% 63% 42%; }
+      100% { transform:translate3d(-8px,18px,0) rotate(-5deg) scale(.97);border-radius:56% 44% 63% 37%/36% 62% 38% 64%; }
+    }
       to { transform:translate3d(20px,-14px,0) rotate(9deg) scale(1.05); }
     }
 
@@ -110,11 +140,21 @@
       gap:24px;
     }
     .brand {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
       text-decoration:none;
       font-size:1rem;
       font-weight:900;
       letter-spacing:-.02em;
       white-space:nowrap;
+    }
+    .brand-mark {
+      width:40px;
+      height:40px;
+      display:block;
+      flex:0 0 auto;
+      filter:drop-shadow(0 5px 12px rgba(85,182,245,.12));
     }
     .nav-right { display:flex;align-items:center;gap:8px; }
     .nav-right a {
@@ -321,9 +361,10 @@
       .charter-grid { grid-template-columns:1fr; }
     }
     @media (max-width:700px) {
-      .shell { width:min(100% - 30px,1120px); }
+      .shell { width:min(100% - 30px,1180px); }
       .nav { min-height:68px; }
-      .brand { font-size:.9rem; }
+      .brand { font-size:.9rem;gap:8px; }
+      .brand-mark { width:34px;height:34px; }
       .nav-right a { display:none; }
       .hero { padding:78px 0 58px; }
       .card { padding:28px; }
@@ -341,14 +382,15 @@
 </head>
 <body>
   <div class="page-blobs" aria-hidden="true">
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
+    <div class="blob one" data-depth="0.055"></div>
+    <div class="blob two" data-depth="0.075"></div>
+    <div class="blob three" data-depth="0.09"></div>
+    <div class="blob four" data-depth="0.045"></div>
   </div>
 
   <header class="site-header">
     <div class="shell nav">
-      <a class="brand" href="../">Kitsune Innovation Labs</a>
+      <a class="brand" href="../"><img class="brand-mark" src="../assets/kitsune-emblem.png" alt="" aria-hidden="true"><span>Kitsune Innovation Labs</span></a>
       <div class="nav-right">
         <a href="../">Home</a>
         <a href="../design/">Kitsunebi</a>
@@ -449,6 +491,37 @@
       localStorage.setItem('kitsune-theme', next);
       syncToggle();
     });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const blobs = [...document.querySelectorAll('.blob[data-depth]')];
+    let scrollTick = false;
+
+    function moveBlobs() {
+      if (reduceMotion.matches) {
+        blobs.forEach(blob => blob.style.removeProperty('--scroll-shift'));
+        scrollTick = false;
+        return;
+      }
+
+      const y = window.scrollY;
+      blobs.forEach(blob => {
+        const depth = parseFloat(blob.dataset.depth || '0');
+        const shift = Math.max(-120, Math.min(120, -y * depth));
+        blob.style.setProperty('--scroll-shift', `${shift}px`);
+      });
+      scrollTick = false;
+    }
+
+    function requestBlobMove() {
+      if (!scrollTick) {
+        scrollTick = true;
+        requestAnimationFrame(moveBlobs);
+      }
+    }
+
+    window.addEventListener('scroll', requestBlobMove, { passive:true });
+    reduceMotion.addEventListener?.('change', requestBlobMove);
+    moveBlobs();
   </script>
 </body>
 </html>
