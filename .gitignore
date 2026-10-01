@@ -1,0 +1,8 @@
+# Node/Vite
+node_modules/
+kitsuneos/node_modules/
+kitsuneos/dist/
+
+# Local development
+.DS_Store
+*.log
