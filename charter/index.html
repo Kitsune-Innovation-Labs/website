@@ -184,8 +184,12 @@
     }
     .nav-submenu > summary::-webkit-details-marker { display:none; }
     .nav-submenu > summary:hover,.nav-submenu > summary:focus-visible,.nav-submenu[open] > summary { background:var(--soft); }
-    .nav-submenu > summary::after { content:"›";font-size:1rem;transform:none; }
-    .nav-submenu[open] > summary::after { transform:rotate(90deg); }
+    .nav-submenu > summary::after {
+      content:"";width:7px;height:7px;flex:0 0 auto;
+      border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+      transform:rotate(-45deg);transition:transform .18s ease;
+    }
+    .nav-submenu[open] > summary::after { transform:rotate(45deg); }
     .nav-flyout {
       position:absolute;left:calc(100% + 10px);top:-8px;min-width:210px;padding:8px;
       border:1px solid var(--line);border-radius:20px;
