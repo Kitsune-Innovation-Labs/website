@@ -57,8 +57,8 @@ button{font:inherit}
 .nav-submenu{position:relative}
 .nav-submenu>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:11px 12px;border-radius:14px;font-weight:800;font-size:.84rem;cursor:pointer;list-style:none;color:var(--muted)}
 .nav-submenu>summary:hover,.nav-submenu>summary:focus-visible{background:var(--soft)}
-.nav-submenu>summary::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .18s ease;flex:0 0 auto}
-.nav-submenu[open]>summary::after{transform:rotate(45deg)}
+.nav-submenu>summary::after{content:"";width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:7px solid currentColor;transition:transform .18s ease;flex:0 0 auto}
+.nav-submenu[open]>summary::after{transform:rotate(90deg)}
 .nav-flyout{position:absolute;left:calc(100% + 10px);top:-8px;min-width:210px;padding:8px;border:1px solid var(--line);border-radius:20px;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(16px);box-shadow:var(--shadow);z-index:70}
 
 .theme-switch{position:relative;width:62px;height:34px;padding:0;border:1px solid var(--line-strong);border-radius:999px;background:var(--soft);cursor:pointer}
