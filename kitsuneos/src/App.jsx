@@ -98,9 +98,10 @@ function Nav() {
             <div className="nav-dropdown nav-dropdown-grouped">
               <div className="nav-group">
                 <span className="nav-group-label">Systems</span>
-                <details className="nav-submenu" open>
+                <details className="nav-submenu">
                   <summary><span>KitsuneOS</span><span className="nav-status">In development</span></summary>
                   <div className="nav-flyout">
+                    <a href="/kitsuneos/"><span>KitsuneOS overview</span><span aria-hidden="true">→</span></a>
                     {versions.map((version) => (
                       <a key={version.slug} href={`/kitsuneos/${version.slug}/`}>
                         <span>{version.label}</span><span aria-hidden="true">→</span>
