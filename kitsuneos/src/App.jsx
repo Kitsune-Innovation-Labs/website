@@ -171,22 +171,70 @@ function Blobs() {
   );
 }
 
-function VersionVisual({ variant = 0 }) {
+function VersionVisual({ type }) {
   return (
-    <div className={`version-visual visual-${variant % 4}`} aria-hidden="true">
-      <div className="mini-window">
-        <div className="mini-topbar">
-          <span /><span /><span />
-          <i />
+    <div className={`version-visual visual-${type}`} aria-hidden="true">
+      <div className="visual-orb" />
+
+      {type === "desktop" && (
+        <div className="device desktop-device">
+          <div className="screen"><div className="kitsune-ear left" /><div className="kitsune-ear right" /><div className="ui-bar" /><div className="ui-grid"><span /><span /><span /><span /></div></div>
+          <div className="stand" /><div className="base" /><div className="keyboard" />
         </div>
-        <div className="mini-grid">
-          <div className="mini-block small" />
-          <div className="mini-lines"><span /><span /><span /></div>
-          <div className="mini-block tall" />
-          <div className="mini-block wide" />
-          <div className="mini-lines short"><span /><span /></div>
+      )}
+
+      {type === "server" && (
+        <div className="device server-device">
+          <div className="server-stack">
+            {[0,1,2,3].map((n) => <div className="rack-unit" key={n}><b /><span /><span /><span /></div>)}
+          </div>
         </div>
-      </div>
+      )}
+
+      {type === "tv" && (
+        <div className="device tv-device">
+          <div className="screen wide"><div className="kitsune-ear left" /><div className="kitsune-ear right" /><div className="ui-bar" /><div className="media-row"><span /><span /><span /></div></div>
+          <div className="tv-feet"><span /><span /></div>
+          <div className="remote"><i /><i /><i /></div>
+        </div>
+      )}
+
+      {type === "touch" && (
+        <div className="device touch-device">
+          <div className="tablet"><div className="screen"><div className="kitsune-ear left" /><div className="kitsune-ear right" /><div className="ui-bar" /><div className="ui-grid touch-grid"><span /><span /><span /><span /></div></div></div>
+          <div className="stylus" />
+        </div>
+      )}
+
+      {type === "wear" && (
+        <div className="device wear-device">
+          <div className="watch-band top" /><div className="watch-face"><div className="watch-inner"><span>狐</span></div></div><div className="watch-band bottom" />
+        </div>
+      )}
+
+      {type === "game" && (
+        <div className="device game-device">
+          <div className="handheld">
+            <div className="game-pad left"><i /><i /><i /><i /></div>
+            <div className="screen"><div className="kitsune-ear left" /><div className="kitsune-ear right" /><div className="game-scene"><span /><span /><span /></div></div>
+            <div className="game-pad right"><i /><i /><i /><i /></div>
+          </div>
+        </div>
+      )}
+
+      {type === "sim" && (
+        <div className="device sim-device">
+          <div className="dash-panel"><div className="dash-strip" /><div className="dash-gauges"><span /><span /><span /></div></div>
+          <div className="wheel"><div className="wheel-inner">狐</div></div>
+        </div>
+      )}
+
+      {type === "apple-silicon" && (
+        <div className="device laptop-device">
+          <div className="screen"><div className="kitsune-ear left" /><div className="kitsune-ear right" /><div className="ui-bar" /><div className="ui-grid"><span /><span /><span /><span /></div></div>
+          <div className="hinge" /><div className="laptop-base" />
+        </div>
+      )}
     </div>
   );
 }
@@ -248,7 +296,7 @@ export default function App() {
                   </a>
                 </div>
 
-                <VersionVisual variant={index} />
+                <VersionVisual type={version.slug} />
               </article>
             ))}
           </div>
