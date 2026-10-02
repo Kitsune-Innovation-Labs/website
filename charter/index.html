@@ -156,15 +156,30 @@
       flex:0 0 auto;
       filter:drop-shadow(0 5px 12px rgba(85,182,245,.12));
     }
-    .nav-links { display:flex;align-items:center;gap:8px; }
-    .nav-links a {
-      text-decoration:none;
-      padding:9px 12px;
-      border-radius:999px;
-      font-size:.86rem;
-      font-weight:800;
+    .nav-links { display:flex;align-items:center;gap:6px; }
+    .nav-link,.nav-menu summary {
+      appearance:none;border:0;background:none;text-decoration:none;color:var(--ink);
+      padding:9px 12px;border-radius:999px;font-size:.86rem;font-weight:800;
+      line-height:1.2;cursor:pointer;list-style:none;white-space:nowrap;
     }
-    .nav-links a:hover { background:var(--soft); }
+    .nav-menu summary::-webkit-details-marker { display:none; }
+    .nav-link:hover,.nav-link:focus-visible,.nav-menu summary:hover,.nav-menu summary:focus-visible,.nav-menu[open] > summary { background:var(--soft); }
+    .nav-menu { position:relative; }
+    .nav-menu summary::after { content:"⌄";display:inline-block;margin-left:6px;font-size:.72em;transition:transform .18s ease; }
+    .nav-menu[open] summary::after { transform:rotate(180deg); }
+    .nav-dropdown {
+      position:absolute;right:0;top:calc(100% + 10px);min-width:220px;padding:8px;
+      border:1px solid var(--line);border-radius:20px;
+      background:color-mix(in srgb,var(--paper) 94%,transparent);
+      backdrop-filter:blur(16px);box-shadow:var(--shadow);z-index:60;
+    }
+    .nav-dropdown a,.nav-dropdown .nav-disabled {
+      display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;
+      padding:11px 12px;border-radius:14px;text-decoration:none;font-weight:800;font-size:.84rem;
+    }
+    .nav-dropdown a:hover,.nav-dropdown a:focus-visible { background:var(--soft); }
+    .nav-disabled { color:var(--muted);cursor:default; }
+    .nav-status { font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;opacity:.72; }
 
     .theme-switch {
       position:relative;
@@ -365,8 +380,15 @@
       .shell { width:min(100% - 30px,1180px); }
       .nav { min-height:68px; }
       .brand { font-size:.9rem;gap:8px; }
+      .brand span { display:none; }
       .brand-mark { width:34px;height:34px; }
-      .nav-links a:nth-child(1), .nav-links a:nth-child(2) { display:none; }
+      .nav-links { gap:2px; }
+      .nav-link,.nav-menu summary { padding:8px 7px;font-size:.76rem; }
+      .nav-menu summary::after { margin-left:3px; }
+      .nav-dropdown { position:fixed;left:15px;right:15px;top:76px;min-width:0; }
+      .theme-switch { width:54px;flex:0 0 54px; }
+      .theme-switch::before { width:24px;height:24px; }
+      html[data-theme="night"] .theme-switch::before { transform:translateX(20px); }
       .hero { padding:78px 0 58px; }
       .card { padding:28px; }
       .family-item { grid-template-columns:1fr;gap:4px; }
@@ -389,16 +411,7 @@
     <div class="blob four" data-depth="0.045"></div>
   </div>
 
-  <header class="site-header">
-    <div class="shell nav">
-      <a class="brand" href="../"><img class="brand-mark" src="../assets/kitsune-emblem.png" alt="" aria-hidden="true"><span>Kitsune Innovation Labs</span></a>
-      <div class="nav-right">
-        <a href="../">Home</a>
-        <a href="../design/">Kitsunebi</a>
-        <button class="theme-switch" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Use night theme"></button>
-      </div>
-    </div>
-  </header>
+  <header class="site-header"><div class="shell nav"><a class="brand" href="../"><img class="brand-mark" src="../assets/kitsune-emblem.png" alt="" aria-hidden="true"><span>Kitsune Innovation Labs</span></a><nav class="nav-links" aria-label="Primary navigation"><a class="nav-link" href="../">Home</a><details class="nav-menu"><summary>Projects</summary><div class="nav-dropdown"><a href="../#work"><span>All projects</span><span aria-hidden="true">→</span></a><a href="../design/"><span>Kitsunebi Lab</span><span aria-hidden="true">→</span></a><div class="nav-disabled"><span>KitsuneOS</span><span class="nav-status">In development</span></div></div></details><a class="nav-link" href="../design/#/research">Research</a><details class="nav-menu"><summary>Company</summary><div class="nav-dropdown"><a href="../charter/" aria-current="page"><span>Charter</span><span aria-hidden="true">→</span></a><a href="https://github.com/Kitsune-Innovation-Labs"><span>GitHub</span><span aria-hidden="true">↗</span></a></div></details><button class="theme-switch" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Use night theme"></button></nav></div></header>
 
   <main>
     <div class="shell">
@@ -523,6 +536,20 @@
     window.addEventListener('scroll', requestBlobMove, { passive:true });
     reduceMotion.addEventListener?.('change', requestBlobMove);
     moveBlobs();
+
+    document.addEventListener('click', event => {
+      document.querySelectorAll('.nav-menu[open]').forEach(menu => {
+        if (!menu.contains(event.target)) menu.removeAttribute('open');
+      });
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') document.querySelectorAll('.nav-menu[open]').forEach(menu => menu.removeAttribute('open'));
+    });
+    document.querySelectorAll('.nav-menu').forEach(menu => menu.addEventListener('toggle', () => {
+      if (menu.open) document.querySelectorAll('.nav-menu[open]').forEach(other => {
+        if (other !== menu) other.removeAttribute('open');
+      });
+    }));
   </script>
 </body>
 </html>
