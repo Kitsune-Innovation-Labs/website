@@ -168,7 +168,7 @@
     .nav-menu summary::after { content:"⌄";display:inline-block;margin-left:6px;font-size:.72em;transition:transform .18s ease; }
     .nav-menu[open] summary::after { transform:rotate(180deg); }
     .nav-dropdown {
-      position:absolute;right:0;top:calc(100% + 10px);min-width:220px;padding:8px;
+      position:absolute;right:0;top:calc(100% + 10px);min-width:260px;padding:8px;
       border:1px solid var(--line);border-radius:20px;
       background:color-mix(in srgb,var(--paper) 94%,transparent);
       backdrop-filter:blur(16px);box-shadow:var(--shadow);z-index:60;
@@ -180,7 +180,7 @@
     .nav-dropdown a:hover,.nav-dropdown a:focus-visible { background:var(--soft); }
     .nav-disabled { color:var(--muted);cursor:default; }
     .nav-status { font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;opacity:.72; }
-    .nav-dropdown-grouped { min-width:250px; }
+    .nav-dropdown-grouped { min-width:300px; }
     .nav-group + .nav-group { border-top:1px solid var(--line);margin-top:6px;padding-top:6px; }
     .nav-group-label { display:block;padding:7px 12px 5px;font-size:.64rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted); }
 
