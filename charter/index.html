@@ -177,6 +177,21 @@
       display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;
       padding:11px 12px;border-radius:14px;text-decoration:none;font-weight:800;font-size:.84rem;
     }
+    .nav-submenu { position:relative; }
+    .nav-submenu > summary {
+      display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;
+      padding:11px 12px;border-radius:14px;font-weight:800;font-size:.84rem;cursor:pointer;list-style:none;color:var(--muted);
+    }
+    .nav-submenu > summary::-webkit-details-marker { display:none; }
+    .nav-submenu > summary:hover,.nav-submenu > summary:focus-visible,.nav-submenu[open] > summary { background:var(--soft); }
+    .nav-submenu > summary::after { content:"›";font-size:1rem; }
+    .nav-flyout {
+      position:absolute;left:calc(100% + 10px);top:-8px;min-width:210px;padding:8px;
+      border:1px solid var(--line);border-radius:20px;
+      background:color-mix(in srgb,var(--paper) 94%,transparent);
+      backdrop-filter:blur(16px);box-shadow:var(--shadow);z-index:70;
+    }
+    .nav-flyout .nav-disabled { padding:10px 12px; }
     .nav-dropdown a:hover,.nav-dropdown a:focus-visible { background:var(--soft); }
     .nav-disabled { color:var(--muted);cursor:default; }
     .nav-status { font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;opacity:.72; }
@@ -389,6 +404,7 @@
       .nav-link,.nav-menu summary { padding:8px 7px;font-size:.76rem; }
       .nav-menu summary::after { margin-left:3px; }
       .nav-dropdown { position:fixed;left:15px;right:15px;top:76px;min-width:0; }
+      .nav-flyout { position:static;margin:6px 0 2px 12px;min-width:0;box-shadow:none;background:transparent; }
       .theme-switch { width:54px;flex:0 0 54px; }
       .theme-switch::before { width:24px;height:24px; }
       html[data-theme="night"] .theme-switch::before { transform:translateX(20px); }
@@ -414,7 +430,7 @@
     <div class="blob four" data-depth="0.045"></div>
   </div>
 
-  <header class="site-header"><div class="shell nav"><a class="brand" href="../"><img class="brand-mark" src="../assets/kitsune-emblem.png" alt="" aria-hidden="true"><span>Kitsune Innovation Labs</span></a><nav class="nav-links" aria-label="Primary navigation"><a class="nav-link" href="../">Home</a><a class="nav-link" href="../design/">Kitsunebi</a><details class="nav-menu"><summary>Software</summary><div class="nav-dropdown nav-dropdown-grouped"><div class="nav-group"><span class="nav-group-label">Systems</span><div class="nav-disabled"><span>KitsuneOS</span><span class="nav-status">In development</span></div><div class="nav-disabled"><span>Kitsune Control</span><span class="nav-status">In development</span></div></div><div class="nav-group"><span class="nav-group-label">Intelligence</span><div class="nav-disabled"><span>Neko / TenkoAI</span><span class="nav-status">Research</span></div></div><div class="nav-group"><span class="nav-group-label">Experiences</span><div class="nav-disabled"><span>GameTable</span><span class="nav-status">In development</span></div><div class="nav-disabled"><span>Kitsune Music</span><span class="nav-status">Research</span></div><div class="nav-disabled"><span>Kitsune Stream</span><span class="nav-status">Future</span></div></div><div class="nav-group"><span class="nav-group-label">Learning</span><div class="nav-disabled"><span>Kitsune Academy</span><span class="nav-status">Planned</span></div></div></div></details><details class="nav-menu"><summary>Hardware</summary><div class="nav-dropdown"><div class="nav-disabled"><span>Shirogane</span><span class="nav-status">Division</span></div><div class="nav-disabled"><span>KitsuneBook</span><span class="nav-status">Future</span></div><div class="nav-disabled"><span>Kitsune Pocket</span><span class="nav-status">Future</span></div><div class="nav-disabled"><span>Kitsune Slate</span><span class="nav-status">Future</span></div><div class="nav-disabled"><span>Kitsune Loop</span><span class="nav-status">Future</span></div><div class="nav-disabled"><span>Kitsune Serve</span><span class="nav-status">Future</span></div></div></details><a class="nav-link" href="../design/#/research">Research</a><details class="nav-menu"><summary>Company</summary><div class="nav-dropdown"><a href="../charter/" aria-current="page"><span>Charter</span><span aria-hidden="true">→</span></a><a href="https://github.com/Kitsune-Innovation-Labs"><span>GitHub</span><span aria-hidden="true">↗</span></a></div></details><button class="theme-switch" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Use night theme"></button></nav></div></header>
+  <header class="site-header"><div class="shell nav"><a class="brand" href="../"><img class="brand-mark" src="../assets/kitsune-emblem.png" alt="" aria-hidden="true"><span>Kitsune Innovation Labs</span></a><nav class="nav-links" aria-label="Primary navigation"><a class="nav-link" href="../">Home</a><a class="nav-link" href="../design/">Kitsunebi</a><details class="nav-menu"><summary>Software</summary><div class="nav-dropdown nav-dropdown-grouped"><div class="nav-group"><span class="nav-group-label">Systems</span><details class="nav-submenu"><summary><span>KitsuneOS</span><span class="nav-status">In development</span></summary><div class="nav-flyout"><div class="nav-disabled"><span>Desktop</span></div><div class="nav-disabled"><span>Server</span></div><div class="nav-disabled"><span>TV</span></div><div class="nav-disabled"><span>Touch</span></div><div class="nav-disabled"><span>Wear</span></div><div class="nav-disabled"><span>Apple Silicon</span></div></div></details><div class="nav-disabled"><span>Kitsune Control</span><span class="nav-status">In development</span></div></div><div class="nav-group"><span class="nav-group-label">Intelligence</span><div class="nav-disabled"><span>Neko / TenkoAI</span><span class="nav-status">Research</span></div></div><div class="nav-group"><span class="nav-group-label">Experiences</span><div class="nav-disabled"><span>GameTable</span><span class="nav-status">In development</span></div><div class="nav-disabled"><span>Kitsune Music</span><span class="nav-status">Research</span></div><div class="nav-disabled"><span>Kitsune Stream</span><span class="nav-status">Future</span></div></div><div class="nav-group"><span class="nav-group-label">Learning</span><div class="nav-disabled"><span>Kitsune Academy</span><span class="nav-status">Planned</span></div></div></div></details><details class="nav-menu"><summary>Hardware</summary><div class="nav-dropdown"><div class="nav-disabled"><span>Shirogane</span><span class="nav-status">Division</span></div><div class="nav-disabled"><span>KitsuneBook</span><span class="nav-status">Future</span></div><div class="nav-disabled"><span>Kitsune Pocket</span><span class="nav-status">Future</span></div><div class="nav-disabled"><span>Kitsune Slate</span><span class="nav-status">Future</span></div><div class="nav-disabled"><span>Kitsune Loop</span><span class="nav-status">Future</span></div><div class="nav-disabled"><span>Kitsune Serve</span><span class="nav-status">Future</span></div></div></details><a class="nav-link" href="../design/#/research">Research</a><details class="nav-menu"><summary>Company</summary><div class="nav-dropdown"><a href="../charter/" aria-current="page"><span>Charter</span><span aria-hidden="true">→</span></a><a href="https://github.com/Kitsune-Innovation-Labs"><span>GitHub</span><span aria-hidden="true">↗</span></a></div></details><button class="theme-switch" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Use night theme"></button></nav></div></header>
 
   <main>
     <div class="shell">
