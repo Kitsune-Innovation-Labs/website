@@ -112,98 +112,145 @@ function Hero() {
 
 const editions = [
   {
-    key: "kitsune",
-    chip: "Kitsune Edition",
-    name: "The head start",
-    de: "KDE Plasma",
-    desc: "The cozy-arcane flavour. Beautiful by default, dotfiles open, theming documented — a warm den you can make your own at your own pace.",
-    features: [
-      "Pastel-dark 'cozy arcane' theme out of the box",
-      "Dotfiles in the open, theming docs included",
-      "The 'make it yours' journey — a head start, not a wall",
-    ],
+    key: "desktop",
+    name: "KitsuneOS Desktop",
+    short: "Desktop",
+    desc: "The everyday KitsuneOS experience for laptops and desktops: expressive, adaptable, and designed to feel like your computer rather than ours.",
+    href: "/kitsuneos/desktop/",
+    visual: "desktop",
   },
   {
-    key: "hypr",
-    chip: "HyprKitsune Edition",
-    name: "The chaos",
-    de: "Hyprland",
-    desc: "The rice-culture-native flagship. Tiling, flashy, fully yours — for the people who read the wiki twice and rebuilt the kernel for fun.",
-    features: [
-      "Pristine Hyprland rice, engineered to be posted",
-      "Terminal-first soul, keybind-everything philosophy",
-      "The 'btw' flex — you built this machine",
-    ],
+    key: "server",
+    name: "KitsuneOS Server",
+    short: "Server",
+    desc: "A quiet, dependable KitsuneOS environment for self-hosting, infrastructure, homelabs, and services you can inspect and own.",
+    href: "/kitsuneos/server/",
+    visual: "server",
+  },
+  {
+    key: "tv",
+    name: "KitsuneOS TV",
+    short: "TV",
+    desc: "A remote-first living-room system for local media, streaming, games, music, and the wider Kitsune entertainment ecosystem.",
+    href: "/kitsuneos/tv/",
+    visual: "tv",
+  },
+  {
+    key: "touch",
+    name: "KitsuneOS Touch",
+    short: "Touch",
+    desc: "A touch-first edition for handheld and tablet computing, including the kind of open personal devices envisioned by Shirogane.",
+    href: "/kitsuneos/touch/",
+    visual: "touch",
+  },
+  {
+    key: "wear",
+    name: "KitsuneOS Wear",
+    short: "Wear",
+    desc: "A compact KitsuneOS experience for wearables, glanceable information, quick actions, and continuity with the rest of your devices.",
+    href: "/kitsuneos/wear/",
+    visual: "wear",
+  },
+  {
+    key: "game",
+    name: "KitsuneOS Game",
+    short: "Game",
+    desc: "A controller-first edition for console-like systems, emulation, game libraries, local play, and streaming.",
+    href: "/kitsuneos/game/",
+    visual: "game",
+  },
+  {
+    key: "sim",
+    name: "KitsuneOS Sim",
+    short: "Sim",
+    desc: "A simulation-focused edition for cockpits, dashboards, driving rigs, specialist control surfaces, and immersive computing.",
+    href: "/kitsuneos/sim/",
+    visual: "sim",
+  },
+  {
+    key: "apple-silicon",
+    name: "KitsuneOS Apple Silicon",
+    short: "Apple Silicon",
+    desc: "KitsuneOS adapted as a first-class experience for Apple Silicon hardware, building on the open Linux enablement work around the platform.",
+    href: "/kitsuneos/apple-silicon/",
+    visual: "apple",
   },
 ];
 
+function EditionVisual({ type, label }) {
+  return (
+    <div className={`edition-visual edition-visual-${type}`} aria-hidden="true">
+      <div className="edition-visual-window">
+        <div className="visual-bar"><span /><span /><span /></div>
+        <div className="visual-canvas">
+          <div className="visual-block visual-block-a" />
+          <div className="visual-lines">
+            <span /><span /><span />
+          </div>
+          <div className="visual-block visual-block-b" />
+          <div className="visual-lines visual-lines-short">
+            <span /><span />
+          </div>
+        </div>
+      </div>
+      <span className="edition-visual-label">{label}</span>
+    </div>
+  );
+}
+
 function Editions() {
   return (
-    <section id="editions">
+    <section id="editions" className="versions-section">
       <div className="container">
         <motion.div
-          className="section-head"
+          className="section-head versions-head"
           variants={stagger}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.span className="section-eyebrow" variants={fadeUp}>
-            Two flavours
+            One foundation
           </motion.span>
-          <motion.h2 variants={fadeUp}>Kitsune Edition, or do you want the chaos?</motion.h2>
+          <motion.h2 variants={fadeUp}>KitsuneOS, shaped for where you use it.</motion.h2>
           <motion.p variants={fadeUp}>
-            Same fox, two hearts. Pick the calm den, or pick the flex. Either way,
-            the system is yours — that's the whole point.
+            Every version is built on <strong>KitsuneOS Core</strong> — a shared base that keeps
+            the architecture, tooling, and system behaviour coherent while each experience is
+            tuned for its own kind of device.
           </motion.p>
+          <motion.div className="core-callout" variants={fadeUp}>
+            <div>
+              <span className="core-kicker">Shared foundation</span>
+              <h3>KitsuneOS Core</h3>
+              <p>One common system underneath every KitsuneOS experience.</p>
+            </div>
+            <a className="btn btn-ghost" href="/kitsuneos/core/">Explore Core</a>
+          </motion.div>
         </motion.div>
 
-        <motion.div
-          className="editions-grid"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          {editions.map((ed) => (
-            <motion.div key={ed.key} variants={fadeUp}>
-              <TiltCard>
-                <SpotlightCard
-                  className={`edition-card ${ed.key}`}
-                  spotlightColor={
-                    ed.key === "kitsune"
-                      ? "rgba(244, 200, 168, 0.16)"
-                      : "rgba(196, 168, 214, 0.18)"
-                  }
-                >
-                  <div className="glow-top" />
-                  <span className={`edition-chip ${ed.key}`}>{ed.chip}</span>
-                  <h3>{ed.name}</h3>
-                  <div className="de">{ed.de}</div>
-                  <p>{ed.desc}</p>
-                  <ul className="edition-features">
-                    {ed.features.map((f) => (
-                      <li key={f}>
-                        <span className="dot" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </SpotlightCard>
-              </TiltCard>
-            </motion.div>
+        <div className="version-flow">
+          {editions.map((ed, index) => (
+            <motion.article
+              key={ed.key}
+              className={`version-row ${index % 2 ? "version-row-reverse" : ""}`}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+            >
+              <div className="version-copy">
+                <span className="version-number">{String(index + 1).padStart(2, "0")}</span>
+                <span className="version-chip">{ed.short}</span>
+                <h3>{ed.name}</h3>
+                <p>{ed.desc}</p>
+                <div className="version-actions">
+                  <a className="btn btn-primary" href={ed.href}>Explore {ed.short}</a>
+                </div>
+              </div>
+              <EditionVisual type={ed.visual} label={ed.short} />
+            </motion.article>
           ))}
-        </motion.div>
-
-        <motion.p
-          className="edition-question"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          The installer asks: <span>“Kitsune Edition, or do you want the chaos?”</span>
-        </motion.p>
+        </div>
       </div>
     </section>
   );
