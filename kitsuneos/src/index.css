@@ -108,7 +108,7 @@ html[data-theme="night"] .blob{opacity:.46;border-color:rgba(255,255,255,.12);bo
 .version-row.reverse .version-copy{order:2}
 .version-row.reverse .version-visual{order:1}
 .version-copy{position:relative;z-index:3;min-width:0}
-.version-visual{position:relative;z-index:1;min-height:420px;display:grid;place-items:center;overflow:hidden;border-radius:34px}
+.version-visual{position:relative;z-index:1;min-height:420px;display:grid;place-items:center;overflow:visible}
 .visual-orb{position:absolute;z-index:0;width:88%;aspect-ratio:1;border-radius:54% 46% 62% 38%/42% 61% 39% 58%;background:linear-gradient(145deg,color-mix(in srgb,var(--foxfire) 54%,transparent),color-mix(in srgb,var(--sakura) 44%,transparent));transform:rotate(-6deg);pointer-events:none}
 .version-row.reverse .visual-orb{background:linear-gradient(145deg,color-mix(in srgb,var(--ember) 34%,transparent),color-mix(in srgb,var(--foxfire) 42%,transparent));transform:rotate(7deg)}
 .version-art-frame{position:relative;z-index:2;width:min(100%,460px);display:grid;place-items:center;padding:8px}
