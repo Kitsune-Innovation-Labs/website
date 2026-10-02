@@ -156,15 +156,15 @@
       flex:0 0 auto;
       filter:drop-shadow(0 5px 12px rgba(85,182,245,.12));
     }
-    .nav-right { display:flex;align-items:center;gap:8px; }
-    .nav-right a {
+    .nav-links { display:flex;align-items:center;gap:8px; }
+    .nav-links a {
       text-decoration:none;
       padding:9px 12px;
       border-radius:999px;
       font-size:.86rem;
       font-weight:800;
     }
-    .nav-right a:hover { background:var(--soft); }
+    .nav-links a:hover { background:var(--soft); }
 
     .theme-switch {
       position:relative;
@@ -366,7 +366,7 @@
       .nav { min-height:68px; }
       .brand { font-size:.9rem;gap:8px; }
       .brand-mark { width:34px;height:34px; }
-      .nav-right a { display:none; }
+      .nav-links a:nth-child(1), .nav-links a:nth-child(2) { display:none; }
       .hero { padding:78px 0 58px; }
       .card { padding:28px; }
       .family-item { grid-template-columns:1fr;gap:4px; }
