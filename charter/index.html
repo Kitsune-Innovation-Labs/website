@@ -200,22 +200,6 @@
       position:relative;
       max-width:900px;
       padding:112px 0 82px;
-      isolation:isolate;
-    }
-    .hero::before {
-      content:"";
-      position:absolute;
-      z-index:0;
-      left:-72px;
-      top:78px;
-      width:min(900px,calc(100vw - 24px));
-      height:390px;
-      pointer-events:none;
-      background:radial-gradient(ellipse at 42% 46%,color-mix(in srgb,var(--cream) 96%,transparent) 0%,color-mix(in srgb,var(--cream) 88%,transparent) 48%,transparent 78%);
-    }
-    .hero > * {
-      position:relative;
-      z-index:1;
     }
     .kicker {
       display:inline-flex;
@@ -384,7 +368,6 @@
       .brand-mark { width:34px;height:34px; }
       .nav-right a { display:none; }
       .hero { padding:78px 0 58px; }
-      .hero::before { left:-30px;top:54px;width:calc(100vw - 10px);height:360px; }
       .card { padding:28px; }
       .family-item { grid-template-columns:1fr;gap:4px; }
       .footer-row { align-items:flex-start;flex-direction:column; }
