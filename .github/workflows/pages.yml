@@ -41,6 +41,7 @@ jobs:
           cp -a assets _site/
           cp -a charter _site/
           cp -a design _site/
+          cp -a gametable _site/
           mkdir -p _site/kitsuneos
           cp -a kitsuneos/dist/. _site/kitsuneos/
 
