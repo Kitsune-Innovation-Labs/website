@@ -26,3 +26,7 @@ Update only its canonical Markdown. To add an article, register metadata/path/ro
 ## Navigation and reading architecture
 
 The shared wayfinding bar links the existing compiled Design Lab, Voice Studio and Research Library (`design/kb-navigation.*`), with the current section clearly identified. The original Design Lab is not replaced. A research landing page offers labelled jumps to papers, methods and specifications. Individual reading pages offer category browsing, on-page contents, mobile disclosure versions of both, breadcrumbs, and previous/next links. The active document is marked with `aria-current=page`; all destinations are ordinary links that work without the navigation JavaScript.
+
+## Reading-first layout experiment (2026-10-23)
+
+Based on direct usability feedback that the overall library feels confusing or overwhelming, the development preview replaces the long, multi-panel homepage with one short list of three paper entries and two optional disclosure groups: Research methods and Technical foundations. It intentionally removes duplicate statistics, category-jump cards and promotional paragraphs. Paper readers now keep just Back to library, a single collapsible Contents section, a secondary citation/print/source disclosure and previous/next links. **All eight canonical Markdown documents and routes remain intact.** This is a design hypothesis, not an empirically validated result; evaluate ease of finding a paper and returning without instruction before promoting to production.
