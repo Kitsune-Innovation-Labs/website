@@ -1,10 +1,3 @@
-const root=document.documentElement;
-let previous="day";try{const saved=localStorage.getItem("kitsunebi-research-theme");if(saved==="day"||saved==="night")previous=saved;}catch{}
-root.dataset.theme=previous;
-const toggle=document.querySelector("[data-theme-toggle]");
-function syncToggle(){if(toggle){toggle.firstChild.nodeValue=root.dataset.theme==="night"?"☀ ":"☾ ";toggle.setAttribute("aria-label","Switch to "+(root.dataset.theme==="night"?"day":"night")+" theme");}}
-syncToggle();
-toggle?.addEventListener("click",()=>{root.dataset.theme=root.dataset.theme==="night"?"day":"night";try{localStorage.setItem("kitsunebi-research-theme",root.dataset.theme)}catch{}syncToggle();});
 const notice=document.createElement("div");notice.className="notice-live";notice.setAttribute("role","status");notice.setAttribute("aria-live","polite");document.body.appendChild(notice);
 const announce=text=>{notice.textContent=text;};
 document.querySelector("[data-print]")?.addEventListener("click",()=>window.print());

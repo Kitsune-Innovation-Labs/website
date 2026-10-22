@@ -91,6 +91,8 @@
 <meta name="description" content="${escape(description)}"><meta name="color-scheme" content="light dark">
 <title>${escape(title)} · Kitsunebi Research · Kitsune Innovation Labs</title>
 <link rel="stylesheet" href="${site}library.css">
+<link rel="stylesheet" href="/assets/kil-site-header.css">
+<script type="module" src="/assets/kil-site-header.mjs"></script>
 <link rel="stylesheet" href="/design/kb-navigation.css">
 <script type="module" src="/design/kb-navigation.mjs"></script>
 ${extraHead}

@@ -1,27 +1,19 @@
-/* Shared Kitsunebi wayfinding. Deliberately namespaced: the original Design Lab is a compiled React bundle. */
-.kb-chrome{position:relative;z-index:90;width:100%;box-sizing:border-box;background:#101936;color:#f8faff;font-family:"M PLUS Rounded 1c",ui-rounded,system-ui,-apple-system,sans-serif;border-bottom:1px solid rgba(255,255,255,.19)}
+/* Kitsunebi's lightweight local navigation, subordinate to the shared KIL header. */
+.kb-chrome{position:relative;z-index:65;color:#11182a;background:#f3f6fb;border-bottom:1px solid rgba(17,24,42,.14);font-family:"M PLUS Rounded 1c",ui-rounded,system-ui,sans-serif}
 .kb-chrome *{box-sizing:border-box}
-.kb-chrome-inner{max-width:1240px;min-height:64px;margin:0 auto;padding:8px 22px;display:flex;align-items:center;gap:clamp(12px,3vw,36px)}
-.kb-chrome a{color:inherit!important;text-decoration:none!important}
-.kb-chrome-brand{display:flex;align-items:center;gap:9px;font-weight:800;white-space:nowrap;font-size:1.03rem;letter-spacing:-.02em}
-.kb-chrome-brand small{font-size:.71em;font-weight:600;opacity:.8}
-.kb-chrome-spark{display:grid;place-items:center;background:#79c8ff;color:#101936!important;width:34px;height:34px;border-radius:12px;font-size:1.4rem}
-.kb-chrome-links{display:flex;align-items:center;gap:5px;flex:1;min-width:0}
-.kb-chrome-links a{display:block;white-space:nowrap;border-radius:999px;padding:10px 14px;font-size:.83rem;font-weight:700;line-height:1.2}
-.kb-chrome-links a:hover,.kb-chrome-links a[aria-current=page]{background:rgba(121,200,255,.22);color:#fff!important}
-.kb-chrome-links a[aria-current=page]{box-shadow:inset 0 0 0 1px rgba(121,200,255,.6)}
-.kb-chrome-parent{white-space:nowrap;font-size:.79rem;font-weight:600;opacity:.85}
-.kb-chrome-parent:hover{opacity:1;text-decoration:underline!important}
-.kb-chrome :focus-visible{outline:3px solid #79c8ff!important;outline-offset:3px!important}
-.kb-nav-ready>.site-header{display:none}
-/* Existing Lab header remains intact; only its upper-level sections get a shared home. */
-@media(max-width:800px){
- .kb-chrome-inner{flex-wrap:wrap;gap:4px 10px;padding:10px 15px 7px}
- .kb-chrome-brand{font-size:.92rem}
- .kb-chrome-spark{width:29px;height:29px;border-radius:10px}
- .kb-chrome-parent{margin-left:auto;font-size:.72rem}
- .kb-chrome-links{order:3;flex:0 0 100%;width:100%;overflow-x:auto;scrollbar-width:thin;gap:3px;padding:5px 0 7px}
- .kb-chrome-links a{padding:9px 12px;font-size:.8rem}
-}
+.kb-chrome-inner{width:min(1180px,calc(100% - 48px));margin:0 auto;min-height:54px;display:flex;align-items:center;gap:27px}
+.kb-chrome-brand{white-space:nowrap;font-size:.83rem;font-weight:800;letter-spacing:.01em}
+.kb-chrome-links{display:flex;align-items:center;gap:5px;min-width:0}
+.kb-chrome-links a{display:block;font-size:.82rem;line-height:1.2;font-weight:700;color:#11182a!important;text-decoration:none!important;padding:10px 13px;border-radius:999px;white-space:nowrap}
+.kb-chrome-links a:hover,.kb-chrome-links a[aria-current="page"]{background:rgba(121,200,255,.32);color:#11182a!important}
+.kb-chrome-links a[aria-current="page"]{box-shadow:inset 0 0 0 1px rgba(35,108,166,.4)}
+.kb-chrome :focus-visible{outline:3px solid #1755a5;outline-offset:3px}
+html[data-theme="night"] .kb-chrome{background:#162140;color:#f8faff;border-color:rgba(238,243,255,.2)}
+html[data-theme="night"] .kb-chrome-links a{color:#f8faff!important}
+html[data-theme="night"] .kb-chrome-links a:hover,html[data-theme="night"] .kb-chrome-links a[aria-current="page"]{background:rgba(121,200,255,.16);color:#f8faff!important}
+html[data-theme="night"] .kb-chrome :focus-visible{outline-color:#79c8ff}
+body.kb-nav-ready>.site-header{display:none}
+@media(max-width:700px){.kb-chrome-inner{width:min(100% - 30px,1180px);min-height:49px;gap:12px}.kb-chrome-brand{font-size:.75rem}.kb-chrome-links{overflow-x:auto;scrollbar-width:thin;gap:0}.kb-chrome-links a{font-size:.75rem;padding:9px 10px}}
+@media(max-width:440px){.kb-chrome-inner{flex-wrap:wrap;gap:0;padding:6px 0}.kb-chrome-brand{width:100%;font-size:.72rem}.kb-chrome-links{width:100%}}
+@media(forced-colors:active){.kb-chrome{background:Canvas;color:CanvasText;border-color:CanvasText}.kb-chrome-links a,.kb-chrome-links a[aria-current="page"]{color:LinkText!important}.kb-chrome-links a[aria-current="page"]{outline:2px solid Highlight}}
 @media print{.kb-chrome{display:none!important}}
-@media(forced-colors:active){.kb-chrome{background:Canvas;color:CanvasText;border-bottom:1px solid CanvasText}.kb-chrome a{color:LinkText!important}.kb-chrome-links a[aria-current=page]{outline:2px solid Highlight}.kb-chrome-spark{background:Canvas;color:CanvasText!important;border:1px solid CanvasText}}

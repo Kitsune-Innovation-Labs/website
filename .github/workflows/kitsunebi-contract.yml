@@ -7,6 +7,8 @@ on:
       - 'design/research/**'
       - 'design/kb-navigation.*'
       - 'design/index.html'
+      - 'index.html'
+      - 'assets/kil-site-header.*'
       - '.github/workflows/pages.yml'
       - '.github/workflows/kitsunebi-contract.yml'
   workflow_dispatch:
@@ -50,4 +52,5 @@ jobs:
           node --check design/voice-lab/app.mjs
           node --check design/research/library.mjs
           node --check design/kb-navigation.mjs
+          node --check assets/kil-site-header.mjs
           node --check kitsunebi/tools/build-research.mjs
