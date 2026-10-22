@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-character="reference" data-motion="essential">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kitsunebi Voice Lab: explore an experimental design language that lets people speak it in their own way.">
+  <meta name="color-scheme" content="light dark">
+  <title>Kitsunebi · Voice Lab</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#preview">Skip to interactive preview</a>
+<div class="blob blob-one" aria-hidden="true"></div><div class="blob blob-two" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="../" aria-label="Return to Kitsunebi Lab"><span class="spark" aria-hidden="true">✦</span><span>Kitsunebi <small>狐火</small></span></a>
+  <nav aria-label="Lab navigation"><a href="../">Design Lab</a><a href="https://github.com/Kitsune-Innovation-Labs/website/tree/dev/kitsunebi">Research & specification ↗</a></nav>
+</header>
+<main class="container">
+  <section class="intro" aria-labelledby="title">
+    <span class="eyebrow">KITSUNE INNOVATION LABS / DESIGN EXPERIMENT 001</span>
+    <h1 id="title">One language.<br><em>Infinite voices.</em></h1>
+    <p class="lead">The same actions. The same meaning. A digital world that sounds and feels like <strong>you</strong>.</p>
+    <p class="muted">This is a live, experimental proof of concept—not a finished operating-system theme engine or a completed accessibility certification.</p>
+  </section>
+  <div class="layout">
+    <section class="card editor" aria-labelledby="editor-title">
+      <div class="card-head"><div><p class="eyebrow">YOUR EXPRESSION</p><h2 id="editor-title">Voice Studio</h2></div><span class="status-pill">v0.1 experiment</span></div>
+      <fieldset class="presets"><legend>Start with a voice</legend>
+        <div class="preset-grid">
+          <button type="button" data-preset="reference">✦ Reference</button>
+          <button type="button" data-preset="sanctuary">☾ Sanctuary</button>
+          <button type="button" data-preset="playground">✿ Playground</button>
+          <button type="button" data-preset="workshop">⌘ Workshop</button>
+        </div>
+      </fieldset>
+      <div class="controls">
+        <label>Theme <select id="theme"><option value="day">Day</option><option value="night">Night</option></select></label>
+        <label>Character <select id="character"><option value="reference">Reference</option><option value="sanctuary">Sanctuary</option><option value="playground">Playground</option><option value="workshop">Workshop</option></select></label>
+        <label>Density <select id="density"><option value="spacious">Spacious</option><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></label>
+        <label>Shape <select id="shape"><option value="soft">Soft</option><option value="round">Round</option><option value="crisp">Crisp</option></select></label>
+        <label>Motion <select id="motion"><option value="off">Off</option><option value="essential">Essential</option><option value="expressive">Expressive</option></select></label>
+        <label>Contrast <select id="contrast"><option value="standard">Standard</option><option value="enhanced">Enhanced</option></select></label>
+        <label>Accent colour <input id="accent" type="color" value="#79c8ff" aria-describedby="accent-help"><span id="accent-help" class="hint">Changes accent, not the meaning of danger or focus.</span></label>
+      </div>
+      <div class="actions">
+        <button class="primary" id="export" type="button">Export voice (.json)</button>
+        <button class="secondary" id="import" type="button">Import voice</button>
+        <input hidden id="import-file" type="file" accept=".json,application/json">
+      </div>
+      <p class="hint">Changes preview instantly. No account, upload or automatic storage. Import requires validation.</p>
+    </section>
+    <section id="preview" class="card preview" aria-labelledby="preview-title">
+      <div class="card-head"><div><p class="eyebrow">SAME MEANING, YOUR VOICE</p><h2 id="preview-title">A small world to inhabit</h2></div><span class="status-pill">Live preview</span></div>
+      <div class="scene">
+        <div class="scene-banner"><span class="fox" aria-hidden="true">✦</span><span>Welcome to your space.</span></div>
+        <section class="mock-window" id="sample-window" aria-label="Sample application window">
+          <div class="window-bar"><div class="window-name">✎ &nbsp;My little project <span class="window-caption">· example window</span></div>
+            <div class="window-actions"><button type="button" id="close-window" title="Close example window" aria-label="Close example window">×</button></div>
+          </div>
+          <div class="window-body">
+            <h3>A familiar task, a different feeling.</h3>
+            <p>Every voice can change colour, shape, density and motion. The action to close this example stays the same.</p>
+            <div class="row"><button class="primary" id="save" type="button">Save draft</button><button class="danger" id="delete" type="button">Delete draft…</button></div>
+            <div class="info" role="note"><strong>Information:</strong> colour isn't the only cue. Actions keep readable labels.</div>
+          </div>
+        </section>
+        <div id="closed-state" class="closed" hidden><p>The example window is closed.</p><button id="reopen" class="secondary" type="button">Reopen example window</button></div>
+      </div>
+      <div class="evaluation" aria-labelledby="eval-title"><h3 id="eval-title">What the resolver decided</h3><div id="contrast-details" class="ratios"></div><p id="effective" class="hint"></p><ul id="diagnostics" class="diagnostics" aria-label="Adaptation explanations"></ul></div>
+      <p id="activity" role="status" aria-live="polite" class="activity">Choose a voice to begin.</p>
+    </section>
+  </div>
+  <section class="principles" aria-labelledby="principles-title">
+    <p class="eyebrow">OUR PROMISE</p><h2 id="principles-title">Expression changes. Meaning doesn't.</h2>
+    <div class="principle-grid"><article><span>01</span><h3>Self-authorship</h3><p>Choose dimensions independently. A vivid colour palette can still mean low motion.</p></article>
+    <article><span>02</span><h3>Sanctuary</h3><p>Access, clarity and comfort remain available in every expression.</p></article>
+    <article><span>03</span><h3>Sovereignty</h3><p>Profiles are readable files. Import/export is explicit and local.</p></article></div>
+  </section>
+</main>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-desc">
+  <form method="dialog"><h2 id="confirm-title">Delete this example draft?</h2><p id="confirm-desc">This is only a demonstration. The delete action remains clearly labelled in every voice.</p>
+    <div class="row"><button class="secondary" value="cancel">Cancel</button><button class="danger" id="confirm-delete" value="delete">Delete example</button></div>
+  </form>
+</dialog>
+<footer class="container"><p><strong>Kitsunebi 狐火</strong> — an open research experiment from Kitsune Innovation Labs. <a href="https://github.com/Kitsune-Innovation-Labs/website/tree/dev/kitsunebi/research">Read the working papers</a>.</p></footer>
+</body></html>
