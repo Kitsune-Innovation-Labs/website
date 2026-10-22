@@ -1,34 +1,25 @@
-/* Kitsunebi shared wayfinding — additive to the existing compiled Design Lab.
- * One navigation contract on Design Lab, Voice Studio and Research Library.
- */
+/* Local Kitsunebi wayfinding nested below the shared KIL primary header. */
+import "/assets/kil-site-header.mjs";
 (() => {
   if (document.querySelector(".kb-chrome")) return;
-  const path = window.location.pathname;
-  const active = path.startsWith("/design/research/") ? "research"
-    : path.startsWith("/design/voice-lab/") ? "studio" : "design";
-  const links = [
-    {key:"design",text:"Design Lab",href:"/design/"},
-    {key:"studio",text:"Voice Studio",href:"/design/voice-lab/"},
-    {key:"research",text:"Research Library",href:"/design/research/"}
-  ];
-  const header=document.createElement("div");
-  header.className="kb-chrome";
+  const path=window.location.pathname;
+  const active=path.startsWith("/design/research/")?"research":path.startsWith("/design/voice-lab/")?"studio":"design";
+  const nav=document.createElement("nav");nav.className="kb-chrome";nav.setAttribute("aria-label","Kitsunebi sections");
   const inner=document.createElement("div");inner.className="kb-chrome-inner";
-  const brand=document.createElement("a");brand.className="kb-chrome-brand";
-  brand.href="/design/";brand.setAttribute("aria-label","Kitsunebi home — Design Lab");
-  const mark=document.createElement("span");mark.className="kb-chrome-spark";mark.textContent="✦";mark.setAttribute("aria-hidden","true");
-  const brandText=document.createElement("span");brandText.textContent="Kitsunebi";
-  const japanese=document.createElement("small");japanese.textContent="狐火";brandText.append(" ",japanese);
-  brand.append(mark,brandText);
-  const nav=document.createElement("nav");nav.className="kb-chrome-links";nav.setAttribute("aria-label","Kitsunebi sections");
-  for(const link of links){
-    const a=document.createElement("a");a.href=link.href;a.textContent=link.text;
-    if(link.key===active)a.setAttribute("aria-current","page");
-    nav.append(a);
+  const brand=document.createElement("span");brand.className="kb-chrome-brand";brand.textContent="Kitsunebi 狐火";
+  const links=document.createElement("div");links.className="kb-chrome-links";
+  const routes=[
+    {key:"design",name:"Design Lab",url:"/design/"},
+    {key:"studio",name:"Voice Studio",url:"/design/voice-lab/"},
+    {key:"research",name:"Research Library",url:"/design/research/"}
+  ];
+  for(const route of routes){
+    const a=document.createElement("a");a.href=route.url;a.textContent=route.name;
+    if(active===route.key)a.setAttribute("aria-current","page");
+    links.append(a);
   }
-  const parent=document.createElement("a");parent.className="kb-chrome-parent";
-  parent.href="/";parent.textContent="Kitsune Labs ↗";parent.setAttribute("aria-label","Kitsune Innovation Labs home");
-  inner.append(brand,nav,parent);header.append(inner);
-  document.body.prepend(header);
+  inner.append(brand,links);nav.append(inner);
+  const global=document.querySelector(".kil-header-host");
+  if(global)global.after(nav);else document.body.prepend(nav);
   document.body.classList.add("kb-nav-ready");
 })();
