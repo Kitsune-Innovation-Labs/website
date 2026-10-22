@@ -72,7 +72,7 @@ export function contrastRatio(a,b) {
   return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);
 }
 export function readableTextFor(bg) {
-  return contrastRatio(bg,"#11182A") >= contrastRatio(bg,"#FFFFFF") ? "#11182A" : "#FFFFFF";
+  return contrastRatio(bg,"#000000") >= contrastRatio(bg,"#FFFFFF") ? "#000000" : "#FFFFFF";
 }
 
 export function tokenAt(tokens,path) {
