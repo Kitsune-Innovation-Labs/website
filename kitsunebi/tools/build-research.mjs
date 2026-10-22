@@ -91,6 +91,8 @@
 <meta name="description" content="${escape(description)}"><meta name="color-scheme" content="light dark">
 <title>${escape(title)} · Kitsunebi Research · Kitsune Innovation Labs</title>
 <link rel="stylesheet" href="${site}library.css">
+<link rel="stylesheet" href="/design/kb-navigation.css">
+<script type="module" src="/design/kb-navigation.mjs"></script>
 ${extraHead}
 ${script?`<script src="${site}library.mjs" type="module"></script>`:""}
 </head><body class="${type}">
@@ -111,6 +113,11 @@ ${main}
 <div class="hero-actions"><a class="primary-link" href="#papers">Explore the papers <span aria-hidden="true">↗</span></a><a class="subtle-link" href="/design/voice-lab/">Try the Voice Lab <span aria-hidden="true">↗</span></a></div>
 <div class="research-status" role="note"><span class="status-mark" aria-hidden="true">✳</span><div><strong>A research library, not a finished body of evidence.</strong><p>These papers are conceptual working drafts, <em>not peer-reviewed results</em>. No participant research is claimed. Specifications and study proposals are clearly separated from findings.</p></div></div>
 </section>
+<nav class="research-wayfinding" aria-label="Explore research categories">
+<a href="#papers"><span class="wayfinding-icon" aria-hidden="true">✦</span><strong>Read the papers</strong><span>3 working manuscripts</span><span class="wayfinding-arrow" aria-hidden="true">↓</span></a>
+<a href="#experiments"><span class="wayfinding-icon" aria-hidden="true">⌕</span><strong>Experiments</strong><span>Study plan & live prototype</span><span class="wayfinding-arrow" aria-hidden="true">↓</span></a>
+<a href="#specifications"><span class="wayfinding-icon" aria-hidden="true">◇</span><strong>Specifications</strong><span>Grammar, architecture & decisions</span><span class="wayfinding-arrow" aria-hidden="true">↓</span></a>
+</nav>
 <section class="stat-row" aria-label="Research collection summary"><div><strong>03</strong><span>Working papers</span></div><div><strong>01</strong><span>Study protocol</span></div><div><strong>04</strong><span>Specifications & decisions</span></div></section>
 <section id="papers" class="collection" aria-labelledby="papers-title"><div class="section-heading"><div><div class="eyebrow">01 / PUBLICATIONS</div><h2 id="papers-title">Papers & working drafts</h2><p>Ideas stated precisely enough to be challenged, tested and improved.</p></div></div>
 <div class="paper-grid">${papers.filter(p=>p.category==="paper").map(p=>`<article class="paper-card" data-search="${escape([p.title,p.subtitle,p.tag,p.summary].join(" ").toLowerCase())}">
@@ -137,16 +144,24 @@ ${main}
     const c=`Kitsune Innovation Labs. (2026). ${paper.title}${paper.subtitle && paper.category==="paper"?": "+paper.subtitle:""} (${paper.label}, Version 0.1) [Working draft]. ${sourceUrl+paper.path}`;
     const words=md.trim().split(/\s+/).length;
     const status=paper.category==="paper"?"Conceptual working draft · Not peer reviewed":paper.category==="experiment"?"Proposed study · Not conducted":"Engineering proposal · Under review";
-    const scholarly=`<div class="article-hero"><div class="crumbs"><a href="${site}">Research Library</a><span aria-hidden="true">›</span><span>${escape(paper.label)}</span></div><div class="eyebrow">KITSUNEBI RESEARCH · ${escape(paper.tag.toUpperCase())}</div><h1>${escape(paper.title)}</h1><p class="article-subtitle">${escape(paper.subtitle)}</p>
+    const sameGroup=papers.filter(p=>p.category===paper.category);
+    const groupIndex=sameGroup.findIndex(p=>p.id===paper.id);
+    const preceding=sameGroup[groupIndex-1], following=sameGroup[groupIndex+1];
+    const categories=[["Working papers",papers.filter(p=>p.category==="paper")],["Methods & experiments",papers.filter(p=>p.category==="experiment")],["Specifications & decisions",papers.filter(p=>p.category==="spec")]];
+    const browseLinks=categories.map(([label,items])=>`<section><h3>${escape(label)}</h3><ul>${items.map(item=>`<li><a href="${site+item.route}"${item.id===paper.id?' aria-current="page"':""}>${escape(item.title)}</a></li>`).join("")}</ul></section>`).join("");
+    const mobileContents=`<details class="mobile-contents"><summary>On this page · ${headings.length} sections</summary><nav aria-label="Paper contents"><ol>${toc||"<li>No section headings</li>"}</ol></nav></details>`;
+    const neighbours=[preceding&&{p:preceding,label:"← Previous"},following&&{p:following,label:"Next →"}].filter(Boolean);
+    const readingNav=`<nav class="reading-next" aria-label="Continue reading"><a href="${site}">← Research Library <span>Explore all collections</span></a>${neighbours.map(({p,label})=>`<a href="${site+p.route}">${escape(label)}<span>${escape(p.title)}</span></a>`).join("")}</nav>`;
+    const scholarly=`<div class="article-hero"><nav class="crumbs" aria-label="Breadcrumb"><a href="/design/">Design Lab</a><span aria-hidden="true">›</span><a href="${site}">Research Library</a><span aria-hidden="true">›</span><span aria-current="page">${escape(paper.label)}</span></nav><div class="eyebrow">KITSUNEBI RESEARCH · ${escape(paper.tag.toUpperCase())}</div><h1>${escape(paper.title)}</h1><p class="article-subtitle">${escape(paper.subtitle)}</p>
       <p class="byline">Kitsune Innovation Labs <span aria-hidden="true">·</span> 22 October 2026 <span aria-hidden="true">·</span> v0.1</p>
       <div class="status-callout" role="note"><strong>${escape(status)}</strong><p>This page is generated from the versioned Markdown manuscript in GitHub. No peer review or participant findings are implied.</p></div>
       <div class="article-actions"><button type="button" data-print>Print / Save as PDF <span aria-hidden="true">↗</span></button><button type="button" data-citation-copy>Copy citation</button><a href="${sourceUrl+paper.path}" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a></div>
       <details class="citation"><summary>Show suggested citation</summary><p data-citation-text>${escape(c)}</p><p class="citation-notice">Citation describes a working draft. This manuscript has no DOI or peer-reviewed publication status.</p></details>
       </div>`;
     const body=`<main id="main" class="container reader-main" data-reader><div class="article-layout">
-      <article class="article">${scholarly}<div class="paper-body">${html}</div>
-      <div class="article-bottom"><p><strong>Keep questioning.</strong> This work is open to criticism, revision, empirical evaluation and participation.</p><a href="${site}">← Back to the Research Library</a></div></article>
-      <aside class="toc" aria-label="On this page"><div class="toc-sticky"><div class="eyebrow">ON THIS PAGE</div><ol>${toc||"<li>No section headings</li>"}</ol>
+      <article class="article">${scholarly}<nav class="mobile-library-nav" aria-label="Research navigation"><details><summary>Browse the Library</summary><div class="mobile-library-menu">${browseLinks}</div></details></nav>${mobileContents}<div class="paper-body">${html}</div>
+      <div class="article-bottom"><p><strong>Keep questioning.</strong> This work is open to criticism, revision, empirical evaluation and participation.</p></div>${readingNav}</article>
+      <aside class="toc" aria-label="On this page"><div class="toc-sticky"><div class="library-browse"><div class="eyebrow">BROWSE THE LIBRARY</div>${browseLinks}</div><div class="toc-divider"></div><div class="eyebrow">ON THIS PAGE</div><ol>${toc||"<li>No section headings</li>"}</ol>
       <div class="toc-meta"><span>${words.toLocaleString("en-NZ")} words</span><span>About ${Math.max(1,Math.ceil(words/220))} min read</span></div>
       <div class="toc-cross"><a href="/design/voice-lab/">✦ Try the Voice Lab ↗</a><a href="${site}">← All research</a></div></div></aside></div></main>`;
     const destination=join(out,paper.route,"index.html");await mkdir(dirname(destination),{recursive:true});

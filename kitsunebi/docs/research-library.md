@@ -22,3 +22,7 @@ The existing `design/` Lab is bundled/minified and intentionally untouched; the 
 Update only its canonical Markdown. To add an article, register metadata/path/route in `kitsunebi/tools/build-research.mjs`. Its citation, page, index card and TOC are generated. Re-run CI and visually inspect staging. Maintain consistent titles and publication status.
 
 **Known limitations:** the minimal dependency-free Markdown renderer covers the current manuscripts (headings, paragraphs, inline emphasis/code/links, lists, tables, quotes, fences). It is not yet a full CommonMark/GFM parser; future complex math, citations, footnotes and figures need a vetted local build-time renderer and regression fixtures. No PDFs or DOIs have been minted. Do not label papers peer-reviewed without external review and evidence.
+
+## Navigation and reading architecture
+
+The shared wayfinding bar links the existing compiled Design Lab, Voice Studio and Research Library (`design/kb-navigation.*`), with the current section clearly identified. The original Design Lab is not replaced. A research landing page offers labelled jumps to papers, methods and specifications. Individual reading pages offer category browsing, on-page contents, mobile disclosure versions of both, breadcrumbs, and previous/next links. The active document is marked with `aria-current=page`; all destinations are ordinary links that work without the navigation JavaScript.

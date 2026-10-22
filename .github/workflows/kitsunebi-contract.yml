@@ -5,6 +5,8 @@ on:
       - 'kitsunebi/**'
       - 'design/voice-lab/**'
       - 'design/research/**'
+      - 'design/kb-navigation.*'
+      - 'design/index.html'
       - '.github/workflows/pages.yml'
       - '.github/workflows/kitsunebi-contract.yml'
   workflow_dispatch:
@@ -39,4 +41,5 @@ jobs:
           node --check design/voice-lab/core.mjs
           node --check design/voice-lab/app.mjs
           node --check design/research/library.mjs
+          node --check design/kb-navigation.mjs
           node --check kitsunebi/tools/build-research.mjs
