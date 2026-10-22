@@ -45,6 +45,9 @@ jobs:
           mkdir -p _site/kitsuneos
           cp -a kitsuneos/dist/. _site/kitsuneos/
 
+      - name: Generate Research Library from the canonical Markdown
+        run: node kitsunebi/tools/build-research.mjs _site/design/research
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

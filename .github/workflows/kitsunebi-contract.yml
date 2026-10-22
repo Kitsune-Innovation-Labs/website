@@ -4,6 +4,8 @@ on:
     paths:
       - 'kitsunebi/**'
       - 'design/voice-lab/**'
+      - 'design/research/**'
+      - '.github/workflows/pages.yml'
       - '.github/workflows/kitsunebi-contract.yml'
   workflow_dispatch:
 permissions:
@@ -24,7 +26,17 @@ jobs:
           test -s /tmp/kitsunebi-generated/kitsunebi.css
           test -s /tmp/kitsunebi-generated/KitsunebiDay.qml
           test -s /tmp/kitsunebi-generated/KitsunebiNight.qml
+      - name: Generate research library from canonical manuscripts
+        run: |
+          node kitsunebi/tools/build-research.mjs /tmp/kitsunebi-research
+          test -s /tmp/kitsunebi-research/index.html
+          test -s /tmp/kitsunebi-research/papers/semantic-invariance/index.html
+          test -s /tmp/kitsunebi-research/papers/sanctuary/index.html
+          test -s /tmp/kitsunebi-research/papers/coherent-pluralism/index.html
+          grep -q 'Not peer reviewed' /tmp/kitsunebi-research/papers/semantic-invariance/index.html
       - name: Syntax-check browser modules
         run: |
           node --check design/voice-lab/core.mjs
           node --check design/voice-lab/app.mjs
+          node --check design/research/library.mjs
+          node --check kitsunebi/tools/build-research.mjs

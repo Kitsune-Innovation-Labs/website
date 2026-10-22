@@ -12,6 +12,8 @@ Kitsunebi is the design language of Kitsune Innovation Labs. It separates *what 
 - [Architecture](docs/technical-architecture.md): tokens, resolver, accessibility gate, adapters and security boundaries.
 - [Delivery and experiments](docs/roadmap.md): acceptance gates, milestones, ownership and risks.
 - [Research programme](research/README.md): three original *conceptual / methods* papers and a research ethics plan.
+- [Research Library generator](tools/build-research.mjs): builds browsable, accessible reading pages from those canonical Markdown files, without copying or rewriting their content; the `/design/research/` pages are generated as part of the staging and production site builds.
+- [Research Library styles and interaction](../design/research/): self-hosted CSS and small JS for reading, citations and print-to-PDF.
 - [ADR 0001](adr/0001-one-language-many-voices.md): the founding architecture decision.
 - [DTCG token source](../design/voice-lab/reference.tokens.json): one real, reviewable source for the prototype.
 - [Interactive proof of concept](../design/voice-lab/index.html): public static experiment under `/design/voice-lab/` when staged.
