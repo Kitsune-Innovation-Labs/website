@@ -107,34 +107,43 @@ ${main}
 <footer class="site-footer"><div class="container"><p><strong>Kitsunebi 狐火</strong> · Research by <a href="/">Kitsune Innovation Labs</a></p><p>Open exploration, careful claims, and a little foxfire. <a href="https://github.com/Kitsune-Innovation-Labs/website/tree/dev/kitsunebi">Explore the source ↗</a></p></div></footer>
 </body></html>`;
   }
-  const indexMain=`<main id="main" class="container">
-<section class="hero"><div class="eyebrow"><span class="eyebrow-dot"></span> KITSUNE INNOVATION LABS · RESEARCH LIBRARY</div>
-<h1>The thinking<br><em>behind the flame.</em></h1><p class="hero-lead">A living archive of the questions, ideas, experiments and design decisions shaping <strong>Kitsunebi</strong>—a language meant to be spoken in your own voice.</p>
-<div class="hero-actions"><a class="primary-link" href="#papers">Explore the papers <span aria-hidden="true">↗</span></a><a class="subtle-link" href="/design/voice-lab/">Try the Voice Lab <span aria-hidden="true">↗</span></a></div>
-<div class="research-status" role="note"><span class="status-mark" aria-hidden="true">✳</span><div><strong>A research library, not a finished body of evidence.</strong><p>These papers are conceptual working drafts, <em>not peer-reviewed results</em>. No participant research is claimed. Specifications and study proposals are clearly separated from findings.</p></div></div>
-</section>
-<nav class="research-wayfinding" aria-label="Explore research categories">
-<a href="#papers"><span class="wayfinding-icon" aria-hidden="true">✦</span><strong>Read the papers</strong><span>3 working manuscripts</span><span class="wayfinding-arrow" aria-hidden="true">↓</span></a>
-<a href="#experiments"><span class="wayfinding-icon" aria-hidden="true">⌕</span><strong>Experiments</strong><span>Study plan & live prototype</span><span class="wayfinding-arrow" aria-hidden="true">↓</span></a>
-<a href="#specifications"><span class="wayfinding-icon" aria-hidden="true">◇</span><strong>Specifications</strong><span>Grammar, architecture & decisions</span><span class="wayfinding-arrow" aria-hidden="true">↓</span></a>
-</nav>
-<section class="stat-row" aria-label="Research collection summary"><div><strong>03</strong><span>Working papers</span></div><div><strong>01</strong><span>Study protocol</span></div><div><strong>04</strong><span>Specifications & decisions</span></div></section>
-<section id="papers" class="collection" aria-labelledby="papers-title"><div class="section-heading"><div><div class="eyebrow">01 / PUBLICATIONS</div><h2 id="papers-title">Papers & working drafts</h2><p>Ideas stated precisely enough to be challenged, tested and improved.</p></div></div>
-<div class="paper-grid">${papers.filter(p=>p.category==="paper").map(p=>`<article class="paper-card" data-search="${escape([p.title,p.subtitle,p.tag,p.summary].join(" ").toLowerCase())}">
-<div class="paper-card__top"><span class="serial">${p.number}</span><span class="manuscript">Working draft · 2026</span></div>
-<div class="paper-icon" aria-hidden="true">${p.icon}</div><div class="eyebrow">${escape(p.label)} / ${escape(p.tag)}</div>
-<h3><a href="${site+p.route}">${escape(p.title)}</a></h3><p class="subtitle">${escape(p.subtitle)}</p><p>${escape(p.summary)}</p>
-<div class="paper-card__footer"><span>v0.1 · Not peer reviewed</span><a href="${site+p.route}" aria-label="Read ${escape(p.title)}">Read paper ↗</a></div>
-</article>`).join("")}</div></section>
-<section id="experiments" class="collection" aria-labelledby="experiments-title"><div class="section-heading"><div><div class="eyebrow">02 / METHODOLOGY</div><h2 id="experiments-title">Experiments & evidence</h2><p>How we plan to discover what works—and publish what doesn't.</p></div></div>
-<div class="feature-grid">
-<article class="feature-panel"><div class="feature-icon" aria-hidden="true">⌕</div><span class="eyebrow">RESEARCH PROTOCOL · DRAFT</span><h3><a href="${site}experiments/study-protocol/">Study methods & ethics</a></h3><p>Consent, inclusive participant recruitment, accessibility testing, research measures and transparent reporting.</p><a class="text-link" href="${site}experiments/study-protocol/">Read the study protocol ↗</a></article>
-<article class="feature-panel experiment-panel"><div class="feature-icon" aria-hidden="true">✦</div><span class="eyebrow">INTERACTIVE PROTOTYPE</span><h3><a href="/design/voice-lab/">One Language, Infinite Voices</a></h3><p>Experiment with expression, comfort, density and motion. A working prototype—not empirical evidence.</p><a class="text-link" href="/design/voice-lab/">Open the Voice Lab ↗</a></article>
-</div></section>
-<section id="specifications" class="collection" aria-labelledby="specs-title"><div class="section-heading"><div><div class="eyebrow">03 / OPEN DESIGN</div><h2 id="specs-title">Specifications & decisions</h2><p>The technical and philosophical contracts that hold the language together.</p></div></div>
-<div class="spec-grid">${papers.filter(p=>p.category==="spec").map(p=>`<a class="spec-link" href="${site+p.route}"><span class="spec-icon" aria-hidden="true">${p.icon}</span><span><small>${escape(p.label)}</small><strong>${escape(p.title)}</strong><span>${escape(p.summary)}</span></span><span aria-hidden="true" class="arrow">↗</span></a>`).join("")}</div>
-</section><section class="endnote"><div class="eyebrow">OUR POSITION</div><h2>The person owns their expression.<br><em>The language protects the meaning.</em></h2><p>Our reference voice is playful, warm and unmistakably Kitsune. Your voice doesn't have to look like ours.</p><a class="subtle-link" href="/design/voice-lab/">Explore your voice ↗</a></section>
-</main>`;
+  const shortNames={
+    "semantic-invariance":"Speaking a language your way",
+    "sanctuary":"A sanctuary on your terms",
+    "coherent-pluralism":"One language across devices"
+  };
+  const indexMain=`<main id="main" class="container simple-library">
+    <header class="simple-intro">
+      <p class="eyebrow">KITSUNEBI / RESEARCH LIBRARY</p>
+      <h1>Ideas behind the flame.</h1>
+      <p class="simple-lead">The research shaping a design language that lets people make technology their own.</p>
+    </header>
+    <section class="simple-primary" aria-labelledby="start-reading">
+      <div class="simple-section-title"><h2 id="start-reading">Start reading</h2><p>Three connected working papers, best read in order.</p></div>
+      <ol class="simple-paper-list">${papers.filter(p=>p.category==="paper").map(p=>`
+        <li><a href="${site+p.route}"><span class="simple-paper-number" aria-hidden="true">${p.number}</span>
+          <span class="simple-paper-copy"><strong>${escape(shortNames[p.id])}</strong>
+          <span class="simple-paper-formal">${escape(p.title)}</span>
+          <span class="simple-paper-description">${escape(p.summary)}</span></span>
+          <span class="simple-paper-arrow" aria-hidden="true">→</span></a></li>`).join("")}</ol>
+      <p class="simple-draft-note"><strong>Research status:</strong> These are conceptual working drafts, not peer-reviewed results or completed participant studies.</p>
+    </section>
+    <section class="simple-more" aria-labelledby="explore-further">
+      <h2 id="explore-further">Explore further</h2>
+      <p>Supporting material is here when you need it.</p>
+      <details class="simple-disclosure">
+        <summary><span class="simple-summary-icon" aria-hidden="true">⌕</span><span><strong>Research methods</strong><small>How we plan to test our ideas</small></span><span class="simple-chevron" aria-hidden="true">⌄</span></summary>
+        <ul>${papers.filter(p=>p.category==="experiment").map(p=>`<li><a href="${site+p.route}">${escape(p.title)} <span aria-hidden="true">→</span></a></li>`).join("")}</ul>
+      </details>
+      <details class="simple-disclosure">
+        <summary><span class="simple-summary-icon" aria-hidden="true">◇</span><span><strong>Technical foundations</strong><small>Specifications, architecture and design decisions</small></span><span class="simple-chevron" aria-hidden="true">⌄</span></summary>
+        <ul>${papers.filter(p=>p.category==="spec").map(p=>`<li><a href="${site+p.route}">${escape(p.title)} <span aria-hidden="true">→</span></a></li>`).join("")}</ul>
+      </details>
+    </section>
+    <aside class="simple-lab-note"><span class="simple-lab-icon" aria-hidden="true">✦</span><div><strong>Prefer to experiment?</strong>
+      <p>Try the ideas for yourself in our interactive Voice Studio.</p></div>
+      <a href="/design/voice-lab/">Visit Voice Studio →</a></aside>
+  </main>`;
   await mkdir(out,{recursive:true});
   await writeFile(join(out,"index.html"),shell({title:"The thinking behind the flame",description:"Kitsunebi Research Library: working papers, study protocols, specifications, and design decisions.",main:indexMain}));
   for(const paper of papers){
@@ -144,26 +153,37 @@ ${main}
     const c=`Kitsune Innovation Labs. (2026). ${paper.title}${paper.subtitle && paper.category==="paper"?": "+paper.subtitle:""} (${paper.label}, Version 0.1) [Working draft]. ${sourceUrl+paper.path}`;
     const words=md.trim().split(/\s+/).length;
     const status=paper.category==="paper"?"Conceptual working draft · Not peer reviewed":paper.category==="experiment"?"Proposed study · Not conducted":"Engineering proposal · Under review";
-    const sameGroup=papers.filter(p=>p.category===paper.category);
-    const groupIndex=sameGroup.findIndex(p=>p.id===paper.id);
-    const preceding=sameGroup[groupIndex-1], following=sameGroup[groupIndex+1];
-    const categories=[["Working papers",papers.filter(p=>p.category==="paper")],["Methods & experiments",papers.filter(p=>p.category==="experiment")],["Specifications & decisions",papers.filter(p=>p.category==="spec")]];
-    const browseLinks=categories.map(([label,items])=>`<section><h3>${escape(label)}</h3><ul>${items.map(item=>`<li><a href="${site+item.route}"${item.id===paper.id?' aria-current="page"':""}>${escape(item.title)}</a></li>`).join("")}</ul></section>`).join("");
-    const mobileContents=`<details class="mobile-contents"><summary>On this page · ${headings.length} sections</summary><nav aria-label="Paper contents"><ol>${toc||"<li>No section headings</li>"}</ol></nav></details>`;
-    const neighbours=[preceding&&{p:preceding,label:"← Previous"},following&&{p:following,label:"Next →"}].filter(Boolean);
-    const readingNav=`<nav class="reading-next" aria-label="Continue reading"><a href="${site}">← Research Library <span>Explore all collections</span></a>${neighbours.map(({p,label})=>`<a href="${site+p.route}">${escape(label)}<span>${escape(p.title)}</span></a>`).join("")}</nav>`;
-    const scholarly=`<div class="article-hero"><nav class="crumbs" aria-label="Breadcrumb"><a href="/design/">Design Lab</a><span aria-hidden="true">›</span><a href="${site}">Research Library</a><span aria-hidden="true">›</span><span aria-current="page">${escape(paper.label)}</span></nav><div class="eyebrow">KITSUNEBI RESEARCH · ${escape(paper.tag.toUpperCase())}</div><h1>${escape(paper.title)}</h1><p class="article-subtitle">${escape(paper.subtitle)}</p>
-      <p class="byline">Kitsune Innovation Labs <span aria-hidden="true">·</span> 22 October 2026 <span aria-hidden="true">·</span> v0.1</p>
-      <div class="status-callout" role="note"><strong>${escape(status)}</strong><p>This page is generated from the versioned Markdown manuscript in GitHub. No peer review or participant findings are implied.</p></div>
-      <div class="article-actions"><button type="button" data-print>Print / Save as PDF <span aria-hidden="true">↗</span></button><button type="button" data-citation-copy>Copy citation</button><a href="${sourceUrl+paper.path}" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a></div>
-      <details class="citation"><summary>Show suggested citation</summary><p data-citation-text>${escape(c)}</p><p class="citation-notice">Citation describes a working draft. This manuscript has no DOI or peer-reviewed publication status.</p></details>
-      </div>`;
-    const body=`<main id="main" class="container reader-main" data-reader><div class="article-layout">
-      <article class="article">${scholarly}<nav class="mobile-library-nav" aria-label="Research navigation"><details><summary>Browse the Library</summary><div class="mobile-library-menu">${browseLinks}</div></details></nav>${mobileContents}<div class="paper-body">${html}</div>
-      <div class="article-bottom"><p><strong>Keep questioning.</strong> This work is open to criticism, revision, empirical evaluation and participation.</p></div>${readingNav}</article>
-      <aside class="toc" aria-label="On this page"><div class="toc-sticky"><div class="eyebrow">ON THIS PAGE</div><ol>${toc||"<li>No section headings</li>"}</ol><div class="toc-divider"></div><details class="library-browse"><summary>Browse related research</summary>${browseLinks}</details>
-      <div class="toc-meta"><span>${words.toLocaleString("en-NZ")} words</span><span>About ${Math.max(1,Math.ceil(words/220))} min read</span></div>
-      <div class="toc-cross"><a href="/design/voice-lab/">✦ Try the Voice Lab ↗</a><a href="${site}">← All research</a></div></div></aside></div></main>`;
+    const collection=papers.filter(p=>p.category===paper.category);
+    const position=collection.findIndex(p=>p.id===paper.id);
+    const previous=collection[position-1], next=collection[position+1];
+    const typeLabel=paper.category==="paper"?`Paper ${paper.number} of 3`:paper.category==="experiment"?"Research methods":"Technical foundations";
+    const readingNext=`<nav class="simple-reading-navigation" aria-label="Continue reading">
+      <a href="${site}" class="simple-reading-back">← All research</a>
+      ${previous?`<a href="${site+previous.route}">← Previous<span>${escape(previous.title)}</span></a>`:""}
+      ${next?`<a href="${site+next.route}">Next →<span>${escape(next.title)}</span></a>`:""}
+    </nav>`;
+    const contents=`<details class="simple-contents"><summary><span>Contents</span><small>${headings.length} sections</small><span class="simple-chevron" aria-hidden="true">⌄</span></summary>
+      <nav aria-label="In this document"><ol>${toc||"<li>No numbered sections</li>"}</ol></nav></details>`;
+    const scholarly=`<header class="simple-article-header">
+      <nav class="simple-reader-location" aria-label="Document location"><a href="${site}">← All research</a><span>${escape(typeLabel)}</span></nav>
+      <p class="eyebrow">${escape(paper.label)} · KITSUNE INNOVATION LABS</p>
+      <h1>${escape(paper.title)}</h1><p class="simple-article-subtitle">${escape(paper.subtitle)}</p>
+      <p class="simple-article-meta">Kitsune Innovation Labs · 22 October 2026 · Version 0.1</p>
+      <p class="simple-article-status" role="note">${escape(status)}. ${paper.category==="paper"?"No participant results are claimed.":""}</p>
+    </header>`;
+    const readingTools=`<details class="simple-reference-tools"><summary>Citation, PDF and source <span class="simple-chevron" aria-hidden="true">⌄</span></summary>
+      <div class="simple-reference-inner">
+      <div class="article-actions"><button type="button" data-print>Print / Save as PDF</button>
+      <button type="button" data-citation-copy>Copy citation</button>
+      <a href="${sourceUrl+paper.path}" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a></div>
+      <details class="citation"><summary>Show suggested citation</summary><p data-citation-text>${escape(c)}</p>
+      <p class="citation-notice">This citation describes an unreviewed working document without a DOI.</p></details></div></details>`;
+    const body=`<main id="main" class="container reader-main simple-reader" data-reader>
+      <article class="article">${scholarly}${contents}
+      <div class="paper-body">${html}</div>
+      <div class="simple-reader-tools">${readingTools}</div>
+      ${readingNext}</article>
+    </main>`;
     const destination=join(out,paper.route,"index.html");await mkdir(dirname(destination),{recursive:true});
     await writeFile(destination,shell({title:paper.title,description:paper.subtitle+". "+paper.summary,main:body,type:"reader",extraHead:`<meta name="citation_author" content="Kitsune Innovation Labs"><meta name="citation_title" content="${escape(paper.title)}"><meta name="citation_date" content="2026/10/22">`}));
   }
