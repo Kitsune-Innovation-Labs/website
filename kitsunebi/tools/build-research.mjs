@@ -161,7 +161,7 @@ ${main}
     const body=`<main id="main" class="container reader-main" data-reader><div class="article-layout">
       <article class="article">${scholarly}<nav class="mobile-library-nav" aria-label="Research navigation"><details><summary>Browse the Library</summary><div class="mobile-library-menu">${browseLinks}</div></details></nav>${mobileContents}<div class="paper-body">${html}</div>
       <div class="article-bottom"><p><strong>Keep questioning.</strong> This work is open to criticism, revision, empirical evaluation and participation.</p></div>${readingNav}</article>
-      <aside class="toc" aria-label="On this page"><div class="toc-sticky"><div class="library-browse"><div class="eyebrow">BROWSE THE LIBRARY</div>${browseLinks}</div><div class="toc-divider"></div><div class="eyebrow">ON THIS PAGE</div><ol>${toc||"<li>No section headings</li>"}</ol>
+      <aside class="toc" aria-label="On this page"><div class="toc-sticky"><div class="eyebrow">ON THIS PAGE</div><ol>${toc||"<li>No section headings</li>"}</ol><div class="toc-divider"></div><details class="library-browse"><summary>Browse related research</summary>${browseLinks}</details>
       <div class="toc-meta"><span>${words.toLocaleString("en-NZ")} words</span><span>About ${Math.max(1,Math.ceil(words/220))} min read</span></div>
       <div class="toc-cross"><a href="/design/voice-lab/">✦ Try the Voice Lab ↗</a><a href="${site}">← All research</a></div></div></aside></div></main>`;
     const destination=join(out,paper.route,"index.html");await mkdir(dirname(destination),{recursive:true});
