@@ -1,0 +1,306 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Kitsunebi experimental reference voice; semantic roles resolve independently of hue. DTCG 2025.10 tokens.",
+  "palette": {
+    "$type": "color",
+    "foxfire": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4745098,
+          0.78431373,
+          1
+        ],
+        "hex": "#79C8FF"
+      }
+    },
+    "foxfireStrong": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.33333333,
+          0.71372549,
+          0.96078431
+        ],
+        "hex": "#55B6F5"
+      }
+    },
+    "sakura": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.96862745,
+          0.78431373,
+          0.83529412
+        ],
+        "hex": "#F7C8D5"
+      }
+    },
+    "ember": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9372549,
+          0.44705882,
+          0.29019608
+        ],
+        "hex": "#EF724A"
+      }
+    },
+    "night": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0627451,
+          0.09803922,
+          0.21176471
+        ],
+        "hex": "#101936"
+      }
+    },
+    "cream": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.99215686,
+          0.97254902
+        ],
+        "hex": "#FFFDF8"
+      }
+    },
+    "ink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.06666667,
+          0.09411765,
+          0.16470588
+        ],
+        "hex": "#11182A"
+      }
+    },
+    "muted": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4,
+          0.43921569,
+          0.52941176
+        ],
+        "hex": "#667087"
+      }
+    },
+    "white": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#FFFFFF"
+      }
+    },
+    "soft": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.95294118,
+          0.96470588,
+          0.98431373
+        ],
+        "hex": "#F3F6FB"
+      }
+    },
+    "nightBg": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.04705882,
+          0.07843137,
+          0.17254902
+        ],
+        "hex": "#0C142C"
+      }
+    },
+    "nightPaper": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.05882353,
+          0.09411765,
+          0.2
+        ],
+        "hex": "#0F1833"
+      }
+    },
+    "nightInk": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.97254902,
+          0.98039216,
+          1
+        ],
+        "hex": "#F8FAFF"
+      }
+    },
+    "nightMuted": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.70980392,
+          0.74509804,
+          0.81568627
+        ],
+        "hex": "#B5BED0"
+      }
+    },
+    "nightSoft": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.08627451,
+          0.12941176,
+          0.25098039
+        ],
+        "hex": "#162140"
+      }
+    },
+    "danger": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.67843137,
+          0.16078431,
+          0.23921569
+        ],
+        "hex": "#AD293D"
+      }
+    },
+    "focusDay": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.08235294,
+          0.34901961,
+          0.69019608
+        ],
+        "hex": "#1559B0"
+      }
+    }
+  },
+  "semantic": {
+    "day": {
+      "page": {
+        "$type": "color",
+        "$value": "{palette.cream}"
+      },
+      "card": {
+        "$type": "color",
+        "$value": "{palette.white}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{palette.soft}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{palette.ink}"
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "{palette.muted}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{palette.foxfire}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{palette.focusDay}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{palette.danger}"
+      }
+    },
+    "night": {
+      "page": {
+        "$type": "color",
+        "$value": "{palette.nightBg}"
+      },
+      "card": {
+        "$type": "color",
+        "$value": "{palette.nightPaper}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{palette.nightSoft}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{palette.nightInk}"
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "{palette.nightMuted}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{palette.foxfireStrong}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{palette.foxfire}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{palette.ember}"
+      }
+    }
+  },
+  "shape": {
+    "$type": "dimension",
+    "small": {
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      }
+    },
+    "soft": {
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      }
+    },
+    "round": {
+      "$value": {
+        "value": 32,
+        "unit": "px"
+      }
+    }
+  },
+  "space": {
+    "$type": "dimension",
+    "small": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      }
+    },
+    "comfortable": {
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      }
+    },
+    "spacious": {
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      }
+    }
+  }
+}

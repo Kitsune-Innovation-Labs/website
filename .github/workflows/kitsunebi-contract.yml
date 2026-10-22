@@ -1,0 +1,30 @@
+name: Kitsunebi contract checks
+on:
+  pull_request:
+    paths:
+      - 'kitsunebi/**'
+      - 'design/voice-lab/**'
+      - '.github/workflows/kitsunebi-contract.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pure resolver and accessibility invariant tests
+        run: node --test kitsunebi/tests/*.test.mjs
+      - name: Generate CSS and Qt/QML adapter fixtures
+        run: |
+          node kitsunebi/tools/build-tokens.mjs /tmp/kitsunebi-generated
+          test -s /tmp/kitsunebi-generated/kitsunebi.css
+          test -s /tmp/kitsunebi-generated/KitsunebiDay.qml
+          test -s /tmp/kitsunebi-generated/KitsunebiNight.qml
+      - name: Syntax-check browser modules
+        run: |
+          node --check design/voice-lab/core.mjs
+          node --check design/voice-lab/app.mjs

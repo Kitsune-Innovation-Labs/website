@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kitsunelabs.nz/design/schemas/voice-profile-0.1.json",
+  "title": "Kitsunebi Voice Profile 0.1",
+  "description": "Data-only, local-first profile. An application must validate before applying it; formatVersion migration requires explicit handling.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formatVersion",
+    "id",
+    "name",
+    "appearance",
+    "comfort"
+  ],
+  "properties": {
+    "formatVersion": {
+      "const": "0.1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,47}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "appearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "theme",
+        "character",
+        "density",
+        "shape",
+        "accent"
+      ],
+      "properties": {
+        "theme": {
+          "enum": [
+            "day",
+            "night"
+          ]
+        },
+        "character": {
+          "enum": [
+            "reference",
+            "sanctuary",
+            "playground",
+            "workshop"
+          ]
+        },
+        "density": {
+          "enum": [
+            "spacious",
+            "comfortable",
+            "compact"
+          ]
+        },
+        "shape": {
+          "enum": [
+            "soft",
+            "crisp",
+            "round"
+          ]
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        }
+      }
+    },
+    "comfort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "motion",
+        "contrast"
+      ],
+      "properties": {
+        "motion": {
+          "enum": [
+            "off",
+            "essential",
+            "expressive"
+          ]
+        },
+        "contrast": {
+          "enum": [
+            "standard",
+            "enhanced"
+          ]
+        }
+      }
+    }
+  }
+}
