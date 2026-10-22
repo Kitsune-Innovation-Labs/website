@@ -108,3 +108,63 @@ html[data-theme=night] .ambient{opacity:.1}
   .paper-body pre,.table-scroll,.status-callout{break-inside:avoid}.paper-body a{color:#111!important}
   @page{margin:18mm}
 }
+
+
+/* Kitsunebi wayfinding revision — give the user visible, predictable navigation paths. */
+.hero{padding-top:46px;padding-bottom:20px}
+.hero h1{margin:16px 0 18px;font-size:clamp(3.1rem,6.5vw,6.5rem)}
+.hero-lead{max-width:760px}
+.research-status{margin-top:23px}
+.research-wayfinding{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0 30px}
+.research-wayfinding a{position:relative;display:flex;flex-direction:column;gap:4px;padding:20px 22px;border-radius:21px;border:1px solid var(--line-strong);background:var(--raised);text-decoration:none;min-height:140px}
+.research-wayfinding a:hover{background:var(--soft);border-color:var(--focus)}
+.research-wayfinding a strong{font-size:1.02rem}
+.research-wayfinding a span:not(.wayfinding-icon):not(.wayfinding-arrow){font-size:.8rem;color:var(--muted)}
+.wayfinding-icon{font-size:1.35rem;color:var(--focus)}
+.wayfinding-arrow{position:absolute;top:16px;right:16px;font-size:1.2rem}
+.stat-row{margin:5px 0 37px;padding:16px 0}
+.collection{margin:60px 0}
+.reader-main{padding-top:40px}
+.reader-main .crumbs{flex-wrap:wrap;margin-bottom:22px}
+.reader-main .crumbs a{font-weight:700;text-decoration:none}
+.reader-main .crumbs a:hover{text-decoration:underline}
+.toc-sticky{max-height:calc(100vh - 105px);overflow-y:auto;scrollbar-width:thin;padding:10px 8px 14px}
+.library-browse h3{font-size:.76rem;letter-spacing:.03em;color:var(--muted);margin:15px 0 3px;text-transform:uppercase}
+.library-browse ul{padding:0;margin:0;list-style:none}
+.library-browse li{margin:3px 0}
+.library-browse li a{display:block;font-size:.77rem;line-height:1.4;text-decoration:none;padding:8px 10px;border-radius:8px;color:var(--ink)}
+.library-browse li a:hover,.library-browse li a[aria-current=page]{background:var(--soft)}
+.library-browse li a[aria-current=page]{font-weight:700;box-shadow:inset 3px 0 var(--foxfire-strong)}
+.toc-divider{border-top:1px solid var(--line);margin:17px 0}
+.toc-cross{padding-bottom:15px}
+.mobile-contents,.mobile-library-nav{display:none}
+.reading-next{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:32px 0 15px}
+.reading-next a{display:flex;flex-direction:column;gap:8px;padding:20px;border:1px solid var(--line-strong);border-radius:17px;background:var(--raised);color:var(--ink);text-decoration:none;font-size:.77rem;font-weight:700}
+.reading-next a span{font-size:.89rem;font-weight:700;line-height:1.4}
+.reading-next a:hover{background:var(--soft);border-color:var(--focus)}
+@media(max-width:850px){
+ .reader-main{padding-top:20px}
+ .toc{display:none}
+ .mobile-contents,.mobile-library-nav{display:block;margin:12px 0}
+ .mobile-contents summary,.mobile-library-nav summary{cursor:pointer;border:1px solid var(--line-strong);background:var(--raised);border-radius:12px;padding:12px 16px;min-height:44px;font-weight:700}
+ .mobile-contents[open] summary,.mobile-library-nav details[open] summary{border-radius:12px 12px 0 0}
+ .mobile-contents nav,.mobile-library-menu{border:1px solid var(--line);border-top:0;background:var(--raised);padding:16px 21px;border-radius:0 0 12px 12px;max-height:54vh;overflow:auto}
+ .mobile-contents ol,.mobile-library-menu ul{margin:4px 0 10px;padding-left:20px}
+ .mobile-contents li,.mobile-library-menu li{margin:10px 0}
+ .mobile-library-menu section+section{border-top:1px solid var(--line);padding-top:10px}
+ .mobile-library-menu h3{font-size:.81rem}
+ .mobile-library-menu a[aria-current=page]{font-weight:700;text-decoration:underline}
+ .mobile-library-menu a,.mobile-contents a{display:inline-block;min-height:30px}
+}
+@media(max-width:650px){
+ .research-wayfinding{grid-template-columns:1fr;gap:9px}
+ .research-wayfinding a{min-height:91px;padding:13px 18px;gap:0}
+ .research-wayfinding a .wayfinding-icon{font-size:1.1rem}
+ .hero h1{font-size:2.9rem}
+}
+@media print{.research-wayfinding,.mobile-contents,.mobile-library-nav,.reading-next,.library-browse{display:none!important}}
+
+.library-browse{margin:10px 0 18px}
+.library-browse summary{cursor:pointer;font-size:.8rem;font-weight:700;border:1px solid var(--line);border-radius:10px;padding:9px 12px;min-height:42px}
+.library-browse[open] summary{background:var(--soft)}
+.library-browse[open] section{margin-top:9px}
