@@ -22,6 +22,8 @@ This repository contains the public website for Kitsune Innovation Labs.
 - Prefer small, reviewable changes.
 - Do not modify established Kitsunebi design principles merely to simplify implementation.
 - Main KIL marketing pages (`/`, `/charter/`, `/gametable/`, `/life/`, and `/companions/`) should use the canonical `assets/kil-site-header.css` and `assets/kil-site-header.mjs`, not copied navigation markup.
+- The shared header applies to every publicly assembled surface, including the Kitsunebi Lab, generated Research Library, and the Vite-built KitsuneOS site. KitsuneOS mounts the header from `kitsuneos/index.html` outside the React root; do not reintroduce a second React navigation menu.
+- Run `node tools/check-site-navigation.mjs _site` against a fully assembled site before staging or publishing. Update this contract when routes change.
 - Keep the floating ambient bubbles on these pages. Use the established `page-blobs` markup and shared `assets/kil-ambient-motion.mjs` parallax controller; new static pages can import `assets/kil-ambient.css`. Respect reduced-motion preferences.
 - Match shared typography, light/dark palettes, content widths, focus states and responsive behaviour while allowing distinct product accents. Kitsunebi and KitsuneOS are intentionally separate visual contexts.
 - Keep generated build output out of Git; GitHub Actions should build it during deployment.
