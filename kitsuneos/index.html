@@ -3,6 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Load the canonical site-wide navigation at runtime.
+         This Vite app is built under /kitsuneos/, while shared site assets
+         are served from /assets/ by the website staging/production assembly. -->
+    <script>
+      (() => {
+        const stylesheet = document.createElement("link");
+        stylesheet.rel = "stylesheet";
+        stylesheet.href = "/assets/kil-site-header.css";
+        document.head.append(stylesheet);
+        const headerModule = document.createElement("script");
+        headerModule.type = "module";
+        headerModule.src = "/assets/kil-site-header.mjs";
+        document.head.append(headerModule);
+      })();
+    </script>
     <title>Kitsune OS — the fox's own distro, btw</title>
     <meta
       name="description"
@@ -34,6 +49,14 @@
     <meta name="twitter:image" content="https://os.kitsunelabs.nz/og-image.png" />
   </head>
   <body>
+    <div data-kil-header>
+      <nav aria-label="Primary navigation">
+        <a href="/">Home</a> · <a href="/design/">Kitsunebi</a> ·
+        <a href="/kitsuneos/">KitsuneOS</a> · <a href="/gametable/">GameTable</a> ·
+        <a href="/life/">Kitsune Life</a> · <a href="/companions/">Companions</a> ·
+        <a href="/design/research/">Research</a> · <a href="/charter/">Charter</a>
+      </nav>
+    </div>
     <div id="root"></div>
     <noscript>
       <div style="max-width: 560px; margin: 80px auto; padding: 0 24px; text-align: center; font-family: system-ui, sans-serif; color: #eceadf; background: #250f15;">
