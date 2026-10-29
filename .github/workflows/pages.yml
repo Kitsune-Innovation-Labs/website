@@ -50,6 +50,9 @@ jobs:
       - name: Generate Research Library from the canonical Markdown
         run: node kitsunebi/tools/build-research.mjs _site/design/research
 
+      - name: Verify global navigation routes
+        run: node tools/check-site-navigation.mjs _site
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
