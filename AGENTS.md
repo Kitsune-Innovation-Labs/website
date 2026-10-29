@@ -21,6 +21,9 @@ This repository contains the public website for Kitsune Innovation Labs.
 - Treat `Kitsune-Innovation-Labs/kitsunelabs` as the canonical organisational knowledge repository when available.
 - Prefer small, reviewable changes.
 - Do not modify established Kitsunebi design principles merely to simplify implementation.
+- Main KIL marketing pages (`/`, `/charter/`, `/gametable/`, `/life/`, and `/companions/`) should use the canonical `assets/kil-site-header.css` and `assets/kil-site-header.mjs`, not copied navigation markup.
+- Keep the floating ambient bubbles on these pages. Use the established `page-blobs` markup and shared `assets/kil-ambient-motion.mjs` parallax controller; new static pages can import `assets/kil-ambient.css`. Respect reduced-motion preferences.
+- Match shared typography, light/dark palettes, content widths, focus states and responsive behaviour while allowing distinct product accents. Kitsunebi and KitsuneOS are intentionally separate visual contexts.
 - Keep generated build output out of Git; GitHub Actions should build it during deployment.
 - When adding a new public top-level route, update the deployment assembly, relevant site navigation, and repository documentation together.
 - Preserve the custom domains `kitsunelabs.nz` for production and `dev.kitsunelabs.nz` for staging unless the Board explicitly changes them.
