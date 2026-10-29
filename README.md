@@ -28,6 +28,8 @@ Website changes should normally be developed and reviewed on `dev` before being 
 
 ## Shared visual language
 
+Site navigation is global, including the Kitsunebi Lab, generated Research Library and KitsuneOS. KitsuneOS mounts the same header outside the Vite/React root at runtime, while preserving its own page styling. The assembled-site check `node tools/check-site-navigation.mjs _site` detects missing canonical header imports or destinations on representative routes.
+
 Core marketing pages share the Kitsune Innovation Labs navigation, theme behaviour and floating ambient bubbles. Reusable assets are `assets/kil-site-header.css`, `assets/kil-site-header.mjs`, `assets/kil-ambient-motion.mjs` and, for new pages, `assets/kil-ambient.css`. Kitsune Life and Companions also share `assets/kil-concepts.css`.
 
 When creating a new public top-level page, reuse the shared header and ambient motion rather than duplicating JavaScript. Match the homepage's type scale, palette and responsive rhythm while allowing product-specific accents. Kitsunebi and KitsuneOS deliberately have their own product/design experiences.
