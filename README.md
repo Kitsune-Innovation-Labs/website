@@ -8,6 +8,8 @@ Public website for **Kitsune Innovation Labs**, including the main organisation 
 - `/design/` — Kitsunebi design language and playground
 - `/kitsuneos/` — KitsuneOS site
 - `/gametable/` — GameTable product page
+- `/life/` — Kitsune Life (early concept)
+- `/companions/` — Companions (research vision)
 
 ## KitsuneOS development
 
@@ -38,7 +40,7 @@ Its sync workflow:
 
 1. checks out `website` at `dev`;
 2. builds KitsuneOS with Node 22;
-3. assembles the static site, including `/`, `/charter/`, `/design/`, `/kitsuneos/`, `/gametable/`, and shared assets;
+3. assembles the static site, including `/`, `/charter/`, `/design/`, `/kitsuneos/`, `/gametable/`, `/life/`, `/companions/`, and shared assets;
 4. publishes the assembled result to `website-dev` `main`;
 5. serves it through the `dev.kitsunelabs.nz` custom domain.
 
