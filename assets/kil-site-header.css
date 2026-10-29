@@ -83,3 +83,6 @@ html[data-theme="night"] #kil-site-header :focus-visible{outline-color:var(--kil
 }
 @media(prefers-reduced-motion:reduce){#kil-site-header *,#kil-site-header *::before{transition:none!important}}
 @media print{.kil-header-host{display:none!important}}
+
+/* Current section inside grouped navigation menus. */
+#kil-site-header .nav-dropdown a[aria-current="page"]{background:var(--kil-soft);box-shadow:inset 0 0 0 1px var(--kil-strong)}
