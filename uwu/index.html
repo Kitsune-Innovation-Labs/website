@@ -59,6 +59,40 @@ html[data-theme="night"] .uwu .hero h1 em,html[data-theme="night"] .uwu .tint{co
 .roadmap span{font-size:.7rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:#6679bd}
 .roadmap p{color:var(--muted);margin:0}
 .uwu .foot-cta{margin-top:0}
+
+/* A friendly, expressive UwU identity for this concept page. */
+.uwu .hero h1 .uwu-name{display:block;font-size:.45em;line-height:1.55;letter-spacing:-.04em;color:#725ec5}
+html[data-theme="night"] .uwu .hero h1 .uwu-name{color:#c6b4ff}
+.uwu .status{background:linear-gradient(100deg,rgba(244,188,224,.34),rgba(173,204,255,.22)),var(--panel);border-color:rgba(150,120,207,.4)}
+.uwu .status::before{content:"✦";margin-right:8px;color:#a15f9e}
+.uwu .action.primary{background:linear-gradient(115deg,#805ecb,#476fcd)}
+.uwu-mark{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;margin-bottom:13px;border:1px solid rgba(150,120,207,.37);border-radius:999px;background:var(--panel);font-weight:900;font-size:.77rem;box-shadow:0 9px 25px rgba(102,76,177,.09)}
+.uwu-face{position:relative;display:inline-grid;place-items:center;padding:4px 8px;border-radius:12px;background:linear-gradient(135deg,#f6cee5,#c4eaff);color:#614c92;letter-spacing:-.07em;font-size:.94rem}
+.uwu-face:before,.uwu-face:after{content:"";position:absolute;top:-5px;z-index:-1;width:10px;height:12px;background:#f1c0df;border-radius:4px 9px 0 0;rotate:-20deg}
+.uwu-face:before{left:2px}.uwu-face:after{right:2px;rotate:20deg}
+.uwu-floating{position:absolute;z-index:4;border:1px solid rgba(128,110,190,.25);border-radius:999px;padding:8px 13px;background:#fffdff;color:#57458d;box-shadow:0 13px 27px rgba(64,52,125,.13);font-size:.72rem;font-weight:900;white-space:nowrap;pointer-events:none;animation:uwu-float 6s ease-in-out infinite}
+.uwu-floating.top{top:9%;right:-2%;rotate:7deg}.uwu-floating.bottom{left:-3%;bottom:17%;rotate:-7deg;animation-delay:-3s}
+.desktop-art{--demo-bg:radial-gradient(circle at 72% 24%,#8e72ab,#534680 54%,#292847);--demo-frame:linear-gradient(145deg,#947bb8,#383964);--demo-accent:#ffc6e4}
+.desktop-art[data-vibe="foxfire"]{--demo-bg:radial-gradient(circle at 72% 24%,#5da6c7,#315b84 58%,#182e4e);--demo-frame:linear-gradient(145deg,#6ba7cd,#293c68);--demo-accent:#9ee8ff}
+.desktop-art[data-vibe="moonlight"]{--demo-bg:radial-gradient(circle at 72% 24%,#51558c,#2c2d56 58%,#171b35);--demo-frame:linear-gradient(145deg,#5a578d,#171c37);--demo-accent:#cdbfff}
+.desktop-frame{background:var(--demo-frame);transition:background .2s}
+.desktop-screen{background:var(--demo-bg);transition:background .2s}
+.desktop-top{background:rgba(255,255,255,.08);border-radius:11px;padding:8px 10px;margin-bottom:9px}
+.desktop-bubble:first-child{color:var(--demo-accent)}
+.desktop-pet{position:absolute;z-index:4;bottom:30px;right:6%;width:105px;filter:drop-shadow(0 12px 19px rgba(11,16,50,.25));pointer-events:none;rotate:9deg}
+.desktop-pet svg{display:block;width:100%;height:auto}
+.vibe-picker{position:relative;z-index:5;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin:22px auto 8px}
+.vibe-picker-label{font-size:.71rem;letter-spacing:.09em;font-weight:900;text-transform:uppercase;color:var(--muted)}
+.vibe-option{font:900 .73rem var(--font);padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;transition:transform .18s,border-color .18s}
+.vibe-option:hover{transform:translateY(-2px)}
+.vibe-option[aria-pressed="true"]{background:linear-gradient(115deg,rgba(247,186,217,.3),rgba(179,205,255,.28)),var(--panel);border-color:#8f7dcf;box-shadow:inset 0 0 0 1px #8f7dcf}
+.vibe-option:focus-visible{outline:3px solid #337ec0;outline-offset:3px}
+.uwu .tile .icon{background:linear-gradient(135deg,#f8d4e8,#d5eaff);color:#63549e}
+.uwu .quote .emote{display:block;color:#ffd6f2;margin-top:14px;font-size:1.25rem}
+@keyframes uwu-float{50%{translate:0 -8px}}
+@media(max-width:600px){.uwu-floating{font-size:.57rem;padding:6px 8px}.uwu-floating.top{top:0;right:0}.uwu-floating.bottom{left:0;bottom:20%}.desktop-pet{width:66px;bottom:42px;right:8%}.vibe-option{padding:7px 9px;font-size:.69rem}}
+@media(prefers-reduced-motion:reduce){.uwu-floating{animation:none}.vibe-option,.desktop-frame,.desktop-screen{transition:none}.vibe-option:hover{transform:none}}
+
 @media(max-width:950px){.uwu .hero{grid-template-columns:1fr}.desktop-art{min-height:400px}.roadmap{grid-template-columns:1fr}}
 @media(max-width:600px){.desktop-art{min-height:315px}.desktop-frame{padding:7px;border-radius:20px;transform:none}.desktop-screen{min-height:250px;padding:8px}.desktop-apps{min-height:190px;gap:6px}.desktop-top{font-size:.55rem}.window-body{padding:9px}.window-bar{padding:5px 8px}.fake-code{font-size:.6rem}.architecture-node{padding:22px}}
 @media(prefers-reduced-motion:reduce){.desktop-frame{transform:none}}
@@ -71,20 +105,21 @@ html[data-theme="night"] .uwu .hero h1 em,html[data-theme="night"] .uwu .tint{co
   <div class="concept-shell">
     <section class="hero" aria-labelledby="uwu-title">
       <div>
+        <div class="uwu-mark"><span class="uwu-face" aria-hidden="true">UwU</span> a little magic · a lot more you</div>
         <span class="status">Early concept · Not yet available</span>
         <div class="eyebrow">A different kind of Linux desktop</div>
-        <h1 id="uwu-title">Your desktop.<br><em>Your den. Your rules.</em></h1>
-        <p class="lead"><strong>UwU Desktop</strong> is our vision for a fluid, deeply personal Linux desktop environment. Powered by <strong>Awoo Compositor</strong>, dressed by <strong>Nyaa Shell</strong>, and designed around the freedom to make your computer feel like yours.</p>
+        <h1 id="uwu-title"><span class="uwu-name">Say hello to UwU Desktop :3</span>Your desktop.<br><em>Your den. Your rules.</em></h1>
+        <p class="lead"><strong>UwU Desktop</strong> is our vision for a fluid, deeply personal Linux desktop environment. Powered by <strong>Awoo Compositor</strong>, dressed by <strong>Nyaa Shell</strong>, and designed around the freedom to make your computer feel like yours. Soft pastels? Terminal-dark minimalism? A little of both? <strong>Yes, yes, and yes.</strong></p>
         <div class="actions"><a class="action primary" href="#components">Meet Awoo &amp; Nyaa →</a><a class="action" href="#approach">Explore the approach ↓</a></div>
       </div>
-      <div class="desktop-art">
-        <div class="desktop-glow" aria-hidden="true"></div>
+      <div class="desktop-art" data-vibe="sakura">
+        <div class="desktop-glow" aria-hidden="true"></div><span class="uwu-floating top" aria-hidden="true">✧ made with paws · :3</span><span class="uwu-floating bottom" aria-hidden="true">♡ your space, your rules</span>
         <div class="desktop-frame" role="img" aria-label="Illustrative desktop UI concept with a panel, a tiled code editor, a smaller workspace window and a focus widget. Not a working screenshot.">
           <div class="desktop-screen" aria-hidden="true">
-            <div class="desktop-top"><span>✦ Nyaa &nbsp; · &nbsp; Development Space</span><span>◉ &nbsp; Eepy · Balanced · Zoomies &nbsp; ☾</span></div>
+            <div class="desktop-top"><span>🐾 Nyaa &nbsp;·&nbsp; Cozy Dev Den</span><span>☾ &nbsp; Eepy · Balanced · Zoomies</span></div>
             <div class="desktop-apps">
               <div class="desktop-window"><div class="window-bar">● &nbsp; Editor / project.rs</div><div class="window-body"><div class="fake-code"><strong>fn</strong> make_it_yours() {<br>&nbsp; &nbsp;<strong>let</strong> freedom = true;<br>&nbsp; &nbsp;awoo.create_space();<br>}</div><div class="fake-line"></div><div class="fake-line med"></div><div class="fake-line short"></div></div></div>
-              <div class="desktop-side"><div class="desktop-window"><div class="window-bar">✧ &nbsp; Your Spaces</div><div class="window-body"><div class="desktop-bubble">⌘ &nbsp; Development</div><div class="fake-line med"></div><div class="desktop-bubble">☾ &nbsp; Leisure</div></div></div><div class="desktop-window"><div class="window-bar">♡ &nbsp; Quiet controls</div><div class="window-body"><div class="fake-line med"></div><div class="fake-line short"></div></div></div></div>
+              <div class="desktop-side"><div class="desktop-window"><div class="window-bar">✧ &nbsp; Your Spaces</div><div class="window-body"><div class="desktop-bubble">✿ &nbsp; Cozy Dev Den</div><div class="fake-line med"></div><div class="desktop-bubble">☾ &nbsp; Leisure</div></div></div><div class="desktop-window"><div class="window-bar">♡ &nbsp; Quiet controls</div><div class="window-body"><div class="fake-line med"></div><div class="fake-line short"></div></div></div></div>
             </div>
           </div>
         </div>
