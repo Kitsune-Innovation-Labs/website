@@ -44,6 +44,7 @@ jobs:
           cp -a gametable _site/
           cp -a life _site/
           cp -a companions _site/
+          cp -a uwu _site/
           mkdir -p _site/kitsuneos
           cp -a kitsuneos/dist/. _site/kitsuneos/
 
