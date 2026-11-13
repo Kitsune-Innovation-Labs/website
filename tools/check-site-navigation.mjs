@@ -16,6 +16,7 @@ const pages = [
   "gametable/index.html",
   "life/index.html",
   "companions/index.html",
+  "uwu/index.html",
   "design/index.html",
   "design/voice-lab/index.html",
   "design/research/index.html",
@@ -29,6 +30,7 @@ const destinations = [
   ["/gametable/", "GameTable"],
   ["/life/", "Kitsune Life"],
   ["/companions/", "Companions"],
+  ["/uwu/", "UwU Desktop"],
   ["/design/research/", "Research"],
   ["/charter/", "Charter"],
 ];
